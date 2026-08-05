@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "reviewed_at": "2026-08-05",
+  "sources": {
+    "jetpack": {
+      "repository": "Automattic/jetpack",
+      "ref": "5c0d27877fd19504a8de8b8618950d51876816a0"
+    },
+    "docspress": {
+      "repository": "Automattic/docspress",
+      "release": "wordpress-0.10.7",
+      "ref": "517050b6aceb09cacd7dc66c0df2023718e57bd9"
+    }
+  }
+}

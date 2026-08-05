@@ -1,0 +1,59 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Jetpack Docs",
+    "author": "Jetpack",
+    "description": "A temporary editable Jetpack documentation site powered only by upstream DocsPress."
+  },
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "landingPage": "/docs/",
+  "login": true,
+  "steps": [
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "git:directory",
+        "url": "https://github.com/Automattic/docspress",
+        "ref": "517050b6aceb09cacd7dc66c0df2023718e57bd9",
+        "refType": "commit",
+        "path": "plugins/docspress-blocks"
+      },
+      "options": {
+        "activate": false,
+        "targetFolderName": "docspress-blocks"
+      }
+    },
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "git:directory",
+        "url": "https://github.com/Automattic/docspress",
+        "ref": "517050b6aceb09cacd7dc66c0df2023718e57bd9",
+        "refType": "commit",
+        "path": "theme"
+      },
+      "options": {
+        "activate": false,
+        "targetFolderName": "docspress"
+      }
+    },
+    {
+      "step": "writeFiles",
+      "writeToPath": "/wordpress/docspress-source-docs",
+      "filesTree": {
+        "resource": "git:directory",
+        "url": "https://github.com/f/jetpack-docs",
+        "ref": "main",
+        "refType": "branch",
+        "path": "docs"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require_once '/wordpress/wp-load.php'; $root = realpath( '/wordpress/docspress-source-docs' ); $theme = wp_get_theme( 'docspress' ); $theme_root = get_theme_root( 'docspress' ) . '/docspress'; $importer = $theme_root . '/playground/import-local-docs.php'; if ( ! $root || ! $theme->exists() || 'DocsPress' !== $theme->get( 'Name' ) || ! file_exists( $importer ) ) { wp_die( 'DocsPress local documentation importer is unavailable.' ); } update_option( 'active_plugins', array_values( array_unique( array_merge( (array) get_option( 'active_plugins', array() ), array( 'docspress-blocks/docspress-blocks.php' ) ) ) ) ); update_option( 'template', 'docspress' ); update_option( 'stylesheet', 'docspress' ); require $importer; foreach ( get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'posts_per_page' => -1, 'meta_key' => '_docspress_source_path' ) ) as $page ) { $source = (string) get_post_meta( $page->ID, '_docspress_source_path', true ); $relative = preg_replace( '#^docs/#', '', $source ); $filename = realpath( $root . '/' . $relative ); if ( ! $filename || ! str_starts_with( $filename, trailingslashit( $root ) ) || ! is_file( $filename ) ) { continue; } $markdown = file_get_contents( $filename ); if ( false === $markdown ) { continue; } $content = preg_replace( '/<!--\\s*docspress:.*?\\s*-->\\s*/s', '', (string) get_post_field( 'post_content', $page->ID, 'raw' ), 1 ); $content = preg_replace( '/(<pre class=\\\\x22wp-block-code\\\\x22><code)\\\\s+class=\\\\x22language-[A-Za-z0-9_+.-]+\\\\x22>/', '$1>', $content ); $metadata = array( 'version' => 1, 'key' => trim( get_page_uri( $page ), '/' ), 'source' => $source, 'hash' => hash( 'sha256', $markdown ), 'sourceContentBase64' => base64_encode( $markdown ) ); wp_update_post( array( 'ID' => $page->ID, 'post_content' => wp_slash( '<!-- docspress:' . wp_json_encode( $metadata ) . \" -->\\n\" . $content ) ) ); } require_once $theme_root . '/inc/llms.php'; docspress_flush_llms_rewrite_rules();"
+    }
+  ]
+}

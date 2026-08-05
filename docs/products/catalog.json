@@ -1,0 +1,331 @@
+{
+  "version": 1,
+  "reviewed_at": "2026-08-05",
+  "products": [
+    {
+      "id": "jetpack",
+      "label": "Jetpack",
+      "category": "platform-and-creation",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack support",
+          "url": "https://jetpack.com/support/"
+        },
+        {
+          "label": "Jetpack plugin listing",
+          "url": "https://wordpress.org/plugins/jetpack/"
+        },
+        {
+          "label": "Jetpack source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack"
+        }
+      ],
+      "source_paths": [
+        "projects/plugins/jetpack"
+      ]
+    },
+    {
+      "id": "forms",
+      "label": "Jetpack Forms",
+      "category": "platform-and-creation",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack Forms support",
+          "url": "https://jetpack.com/support/jetpack-blocks/contact-form/"
+        },
+        {
+          "label": "Forms package source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/forms"
+        }
+      ],
+      "source_paths": [
+        "projects/packages/forms",
+        "projects/plugins/jetpack/modules/contact-form.php"
+      ]
+    },
+    {
+      "id": "ai",
+      "label": "Jetpack AI Assistant",
+      "category": "platform-and-creation",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack AI support",
+          "url": "https://jetpack.com/support/jetpack-ai/"
+        },
+        {
+          "label": "AI Assistant block source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack/extensions/blocks/ai-assistant"
+        },
+        {
+          "label": "Jetpack AI Client source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/js-packages/ai-client"
+        }
+      ],
+      "source_paths": [
+        "projects/plugins/jetpack/extensions/blocks/ai-assistant",
+        "projects/plugins/jetpack/extensions/plugins/ai-assistant-plugin",
+        "projects/js-packages/ai-client"
+      ]
+    },
+    {
+      "id": "crm",
+      "label": "Jetpack CRM",
+      "category": "growth",
+      "ownership": {
+        "type": "external",
+        "repository": "Automattic/jetpack-crm"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack CRM knowledge base",
+          "url": "https://kb.jetpackcrm.com/"
+        },
+        {
+          "label": "Jetpack CRM source",
+          "url": "https://github.com/Automattic/jetpack-crm"
+        },
+        {
+          "label": "Jetpack CRM API documentation",
+          "url": "https://automattic.github.io/jetpack-crm-api-docs/"
+        },
+        {
+          "label": "Jetpack CRM code examples",
+          "url": "https://github.com/Automattic/jetpack-crm-code-examples"
+        }
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "social",
+      "label": "Jetpack Social",
+      "category": "growth",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack Social support",
+          "url": "https://jetpack.com/support/jetpack-social/"
+        },
+        {
+          "label": "Jetpack Social plugin listing",
+          "url": "https://wordpress.org/plugins/jetpack-social/"
+        },
+        {
+          "label": "Jetpack Social source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/social"
+        }
+      ],
+      "source_paths": [
+        "projects/plugins/social",
+        "projects/packages/publicize",
+        "projects/js-packages/social-previews",
+        "projects/js-packages/social-logos"
+      ]
+    },
+    {
+      "id": "stats",
+      "label": "Jetpack Stats",
+      "category": "growth",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack Stats support",
+          "url": "https://jetpack.com/support/jetpack-stats/"
+        },
+        {
+          "label": "Stats package source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/stats"
+        }
+      ],
+      "source_paths": [
+        "projects/packages/stats",
+        "projects/packages/stats-admin",
+        "projects/plugins/jetpack/modules/stats.php"
+      ]
+    },
+    {
+      "id": "boost",
+      "label": "Jetpack Boost",
+      "category": "performance-and-media",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack Boost support",
+          "url": "https://jetpack.com/support/jetpack-boost/"
+        },
+        {
+          "label": "Jetpack Boost source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/boost"
+        }
+      ],
+      "source_paths": [
+        "projects/plugins/boost",
+        "projects/packages/boost-core",
+        "projects/packages/boost-speed-score",
+        "projects/js-packages/boost-score-api"
+      ]
+    },
+    {
+      "id": "search",
+      "label": "Jetpack Search",
+      "category": "performance-and-media",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack Search support",
+          "url": "https://jetpack.com/support/search/"
+        },
+        {
+          "label": "Jetpack Search source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/search"
+        }
+      ],
+      "source_paths": [
+        "projects/plugins/search",
+        "projects/packages/search"
+      ]
+    },
+    {
+      "id": "videopress",
+      "label": "Jetpack VideoPress",
+      "category": "performance-and-media",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack VideoPress support",
+          "url": "https://jetpack.com/support/jetpack-videopress/"
+        },
+        {
+          "label": "Jetpack VideoPress source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/videopress"
+        }
+      ],
+      "source_paths": [
+        "projects/plugins/videopress",
+        "projects/packages/videopress"
+      ]
+    },
+    {
+      "id": "akismet",
+      "label": "Akismet Anti-spam",
+      "category": "security",
+      "ownership": {
+        "type": "external",
+        "repository": "https://plugins.svn.wordpress.org/akismet/"
+      },
+      "canonical_sources": [
+        {
+          "label": "Akismet documentation",
+          "url": "https://akismet.com/documentation/"
+        },
+        {
+          "label": "Akismet plugin listing",
+          "url": "https://wordpress.org/plugins/akismet/"
+        },
+        {
+          "label": "Akismet public source",
+          "url": "https://plugins.svn.wordpress.org/akismet/"
+        }
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "backup",
+      "label": "VaultPress Backup",
+      "category": "security",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "VaultPress Backup support",
+          "url": "https://jetpack.com/support/backup/"
+        },
+        {
+          "label": "Backup plugin source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/backup"
+        }
+      ],
+      "source_paths": [
+        "projects/plugins/backup",
+        "projects/packages/backup",
+        "projects/packages/backup-helper-script-manager"
+      ]
+    },
+    {
+      "id": "protect",
+      "label": "Jetpack Protect",
+      "category": "security",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack Protect support",
+          "url": "https://jetpack.com/support/jetpack-protect/"
+        },
+        {
+          "label": "Jetpack Protect source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/protect"
+        }
+      ],
+      "source_paths": [
+        "projects/plugins/protect",
+        "projects/packages/protect-models",
+        "projects/packages/protect-status"
+      ]
+    },
+    {
+      "id": "scan",
+      "label": "Jetpack Scan",
+      "category": "security",
+      "ownership": {
+        "type": "jetpack-monorepo",
+        "repository": "Automattic/jetpack"
+      },
+      "canonical_sources": [
+        {
+          "label": "Jetpack Scan support",
+          "url": "https://jetpack.com/support/scan/"
+        },
+        {
+          "label": "Jetpack Scan package source",
+          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/scan"
+        }
+      ],
+      "source_paths": [
+        "projects/packages/scan",
+        "projects/js-packages/scan",
+        "projects/plugins/jetpack/modules/scan"
+      ]
+    }
+  ]
+}
