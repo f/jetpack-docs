@@ -6,11 +6,18 @@ document_type: "how-to"
 sidebar_position: 4
 sidebar_collapsed: false
 product: "search"
-source_ref: "5c0d27877fd19504a8de8b8618950d51876816a0"
+source_ref: "a6e65435e2531e430c75024f1183612f31263d1f"
 last_reviewed: "2026-08-05"
 ---
 
-Search has a thin standalone plugin in `projects/plugins/search` and most reusable behavior in `projects/packages/search`. Inspect both when a bug crosses activation, connection, dashboard, query, or block behavior.
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/file-tree {"root":"Automattic/jetpack","tree":"projects/plugins/search/\nprojects/plugins/jetpack/modules/search.php\nprojects/packages/\n  search/\n  sync/src/modules/class-search.php","caption":"Jetpack Search source ownership at the pinned review revision.","collapsible":true,"open":true} /-->
+
+<!-- wp:docspress/terminal-session {"title":"Jetpack Search project checks","shell":"bash","prompt":"$","command":"jp install plugins/search\njp build plugins/search \u002d\u002ddeps\njp test php plugins/search\njp test php packages/search\njp test js packages/search\njp phan plugins/search\njp phan packages/search","output":"Run only the checks defined by the owning project, then verify the changed behavior in WordPress."} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
+Search has a thin standalone plugin in `projects/plugins/search` and most reusable behavior in `projects/packages/search`. Index ownership also crosses `projects/packages/sync/src/modules/class-search.php` and `projects/plugins/jetpack/modules/search.php`; block taxonomy mapping, AI Answers, and Site Chat live within the Search package. Inspect the owning layer when a bug crosses activation, connection, dashboard, query, Sync, or block behavior.
 
 ## Build the complete dependency path
 
@@ -38,10 +45,10 @@ Service-backed behavior also needs an integration check. Use a disposable connec
 ## Review requirements
 
 - Keep search results restricted to content WordPress considers public.
-- Treat remote result content as an index mirror: the source code deliberately trusts result identifiers and resolves content through WordPress.
+- Distinguish result modes: Classic and Inline request IDs and resolve local WordPress posts, while Instant Search requests and renders selected remote fields directly. Test visibility and escaping in both architectures.
 - Preserve PHP compatibility declared by the project.
 - Add changelog entries for both the plugin and package when both projects change.
 - Test with the standalone Search plugin and any main-Jetpack integration affected by the package.
 - Exercise keyboard and screen-reader behavior for overlays, filters, and result updates.
 
-Review the pinned [Search plugin source](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/search) and [Search package source](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/search). For repository conventions, continue to [Building with Jetpack](/docs/building-with-jetpack/).
+Review the pinned [Search plugin source](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/search) and [Search package source](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/search). For repository conventions, continue to [Building with Jetpack](/docs/building-with-jetpack/).

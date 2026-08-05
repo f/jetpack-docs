@@ -20,4 +20,4 @@ Use `patch`, `minor`, or `major` significance according to compatibility impact.
 
 For an internal-only change with no release note, create the empty entry through the CLI and include a concise `--comment` explanation. Do not hand-edit release versions or replace `$$next-version$$` annotations.
 
-The format and examples are defined by the pinned [changelog guide](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/writing-a-good-changelog-entry.md).
+The format and examples are defined by the pinned [changelog guide](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/writing-a-good-changelog-entry.md).

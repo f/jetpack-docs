@@ -15,6 +15,6 @@ One source-verified example at the pinned revision is:
 | --- | --- | --- | --- |
 | `jetpack_api_exclude_comment_types_count` | Jetpack 6.9.0 | Jetpack 11.1 | `jetpack_api_include_comment_types_count` |
 
-The semantic direction changed from an exclusion list to an inclusion list, so migrating requires translating intent rather than renaming the callback. See the [immutable source and replacement call](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack/class.json-api.php#L1131-L1155).
+The semantic direction changed from an exclusion list to an inclusion list, so migrating requires translating intent rather than renaming the callback. See the [immutable source and replacement call](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack/class.json-api.php#L1131-L1155).
 
 Jetpack also maintains a runtime list of older hooks that can no longer emit a notice at their original call site. Use deprecation output, source annotations, and changelog entries together; do not rely on this page as an exhaustive inventory.

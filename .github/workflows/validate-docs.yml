@@ -32,4 +32,4 @@ jobs:
         run: npm test
 
       - name: Check whitespace
-        run: git diff --check
+        run: git diff --check "$(git hash-object -t tree /dev/null)" HEAD

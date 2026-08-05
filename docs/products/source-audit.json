@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "reviewed_at": "2026-08-05",
+  "repository": "Automattic/jetpack",
+  "ref": "a6e65435e2531e430c75024f1183612f31263d1f",
+  "products": [
+    {
+      "id": "jetpack",
+      "source_paths": [
+        {
+          "path": "projects/plugins/jetpack",
+          "type": "tree",
+          "object": "c9a1a31644b8fde9422bb9ba616240d174ada197"
+        }
+      ]
+    },
+    {
+      "id": "forms",
+      "source_paths": [
+        {
+          "path": "projects/packages/forms",
+          "type": "tree",
+          "object": "4aaf48eecafa2083ec5ea0b5a4c4f7f61bba895f"
+        },
+        {
+          "path": "projects/plugins/jetpack/modules/contact-form.php",
+          "type": "blob",
+          "object": "291c2fb3a5e57cfe555e00ff3170084f9b16c499"
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "source_paths": [
+        {
+          "path": "projects/plugins/jetpack/extensions/blocks/ai-assistant",
+          "type": "tree",
+          "object": "29abb9c36e2923cdd4296e8e457bb5d4e7b966f0"
+        },
+        {
+          "path": "projects/plugins/jetpack/extensions/plugins/ai-assistant-plugin",
+          "type": "tree",
+          "object": "b5dd65403aeaf6679cf41244306370d7947b6608"
+        },
+        {
+          "path": "projects/js-packages/ai-client",
+          "type": "tree",
+          "object": "0df0240c804f4cfab42013168328195dacc23b2a"
+        }
+      ]
+    },
+    {
+      "id": "crm",
+      "source_paths": [],
+      "external_sources": [
+        {
+          "repository": "Automattic/jetpack-crm",
+          "ref": "8dbe017c517819a7f6c583dff6e4cb8819a7f72e"
+        },
+        {
+          "repository": "Automattic/jetpack-crm-api-docs",
+          "ref": "c2a53fd8d6de70f27c87bd15652ccacf0ecabd3f"
+        },
+        {
+          "repository": "Automattic/jetpack-crm-code-examples",
+          "ref": "b0048ae9c73a8bd3d2029aa343317240ecb7af73"
+        }
+      ]
+    },
+    {
+      "id": "social",
+      "source_paths": [
+        {
+          "path": "projects/plugins/social",
+          "type": "tree",
+          "object": "e479a1ea0f48cbeb8b7ab05b37dce3a9fce81800"
+        },
+        {
+          "path": "projects/packages/publicize",
+          "type": "tree",
+          "object": "e8471df25b8e80a7f0d3c829c02023adc142c611"
+        },
+        {
+          "path": "projects/js-packages/social-previews",
+          "type": "tree",
+          "object": "0412d3a6cb7982acbcdbf11726e33f1709c45741"
+        },
+        {
+          "path": "projects/js-packages/social-logos",
+          "type": "tree",
+          "object": "f6f32b6869ab16b175082d9580e2652ee345624c"
+        }
+      ]
+    },
+    {
+      "id": "stats",
+      "source_paths": [
+        {
+          "path": "projects/packages/stats",
+          "type": "tree",
+          "object": "f385a214d8897ed4db18ec1ea46680f71dd43222"
+        },
+        {
+          "path": "projects/packages/stats-admin",
+          "type": "tree",
+          "object": "4300b1f7607e6836a74831ab08cfaf6290bc0226"
+        },
+        {
+          "path": "projects/plugins/jetpack/modules/stats.php",
+          "type": "blob",
+          "object": "3a85872bbdbbb8b35171d30663b2699bd73e6547"
+        }
+      ]
+    },
+    {
+      "id": "boost",
+      "source_paths": [
+        {
+          "path": "projects/plugins/boost",
+          "type": "tree",
+          "object": "58381f3c1d38f933c56779a7d0c53eb1c72e241b"
+        },
+        {
+          "path": "projects/packages/boost-core",
+          "type": "tree",
+          "object": "6b667d766c9fd7bced9056b64d3298f80e81f3d0"
+        },
+        {
+          "path": "projects/packages/boost-speed-score",
+          "type": "tree",
+          "object": "e5d827bce1111a9571933b144fb713207fa0df54"
+        },
+        {
+          "path": "projects/js-packages/boost-score-api",
+          "type": "tree",
+          "object": "f02e6c5ca82b095927cc6778257b156c35f1cebc"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "source_paths": [
+        {
+          "path": "projects/plugins/search",
+          "type": "tree",
+          "object": "2d07db4ba0aaeefe297d5b95fe7e152289437c46"
+        },
+        {
+          "path": "projects/packages/search",
+          "type": "tree",
+          "object": "2ae463d314a86a43d0d28b6d875a28bf954fb2ab"
+        },
+        {
+          "path": "projects/packages/sync/src/modules/class-search.php",
+          "type": "blob",
+          "object": "5e6f952dd19c95d2de131a464ec8ca116dedbb14"
+        },
+        {
+          "path": "projects/plugins/jetpack/modules/search.php",
+          "type": "blob",
+          "object": "c2a4973560bb840ec7f926099d26a6d9833b8d3d"
+        }
+      ]
+    },
+    {
+      "id": "videopress",
+      "source_paths": [
+        {
+          "path": "projects/plugins/videopress",
+          "type": "tree",
+          "object": "5caefa07397109820588d548abcee2a65b96b696"
+        },
+        {
+          "path": "projects/packages/videopress",
+          "type": "tree",
+          "object": "ac2ba342ab232201892ce5b02d24389a7c3b5e92"
+        }
+      ]
+    },
+    {
+      "id": "akismet",
+      "source_paths": [],
+      "external_sources": [
+        {
+          "repository": "plugins.svn.wordpress.org/akismet",
+          "tag": "5.7",
+          "revision": 3514187
+        }
+      ]
+    },
+    {
+      "id": "backup",
+      "source_paths": [
+        {
+          "path": "projects/plugins/backup",
+          "type": "tree",
+          "object": "b33eac75e00f04c72a901128d25b82b5d4ebb727"
+        },
+        {
+          "path": "projects/packages/backup",
+          "type": "tree",
+          "object": "fd0158658696fde3eaa767aa7fd7cf481ac97a04"
+        },
+        {
+          "path": "projects/packages/backup-helper-script-manager",
+          "type": "tree",
+          "object": "0ccdbe13bc2b7173ef63f5a635e04d8576451544"
+        }
+      ]
+    },
+    {
+      "id": "protect",
+      "source_paths": [
+        {
+          "path": "projects/plugins/protect",
+          "type": "tree",
+          "object": "ece3b55f17972835afadce9472263feb68fe5307"
+        },
+        {
+          "path": "projects/packages/protect-models",
+          "type": "tree",
+          "object": "222572c8be4c41a5208fdce6abba664734ce3e21"
+        },
+        {
+          "path": "projects/packages/protect-status",
+          "type": "tree",
+          "object": "d96ff9314e153a79710b0bfd3fd6c3203b9dcf31"
+        },
+        {
+          "path": "projects/packages/account-protection",
+          "type": "tree",
+          "object": "911981aa660859dc13a611333ec1c04763636bb9"
+        },
+        {
+          "path": "projects/packages/waf",
+          "type": "tree",
+          "object": "538a89d475860a396cc48beeaca3fdc5ae6ffe60"
+        },
+        {
+          "path": "projects/js-packages/scan",
+          "type": "tree",
+          "object": "cd88f9a6453b21c364c8635bdb6b47307593a20a"
+        }
+      ]
+    },
+    {
+      "id": "scan",
+      "source_paths": [
+        {
+          "path": "projects/packages/scan",
+          "type": "tree",
+          "object": "3e1e64b5e1a51d8735f04362ec1a7ff387aac831"
+        },
+        {
+          "path": "projects/js-packages/scan",
+          "type": "tree",
+          "object": "cd88f9a6453b21c364c8635bdb6b47307593a20a"
+        },
+        {
+          "path": "projects/plugins/jetpack/modules/scan",
+          "type": "tree",
+          "object": "2fd5cf46c57f3e8c7b36e3efd6c1c734561f7943"
+        }
+      ]
+    }
+  ]
+}

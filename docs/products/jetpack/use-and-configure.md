@@ -6,9 +6,16 @@ document_type: how-to
 sidebar_position: 10
 sidebar_collapsed: false
 product: jetpack
-source_ref: 5c0d27877fd19504a8de8b8618950d51876816a0
+source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---
+
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/flow {"start":1,"steps":[{"title":"Confirm the platform","content":"\u003cp\u003eCheck the current WordPress, PHP, extension, backup, and administrator requirements before activation.\u003c/p\u003e"},{"title":"Register the site and authorize a user","content":"\u003cp\u003eDistinguish the site connection from the current user connection and record who owns the connection.\u003c/p\u003e"},{"title":"Enable and verify one module","content":"\u003cp\u003eCheck its site and user connection requirements, exercise one observable outcome, and record versions.\u003c/p\u003e"}]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Permissions and data boundary","content":"\u003cp\u003eConnection and data behavior is feature-specific. Review the selected module before enabling it; site registration does not automatically authorize every user or data flow.\u003c/p\u003e","collapsible":false,"open":true} /-->
+<!-- jetpack-docs:product-blocks:end -->
 
 ## Before you install
 
@@ -20,9 +27,9 @@ last_reviewed: 2026-08-05
 ## Install and connect
 
 1. In **Plugins > Add New**, search for **Jetpack**, confirm the publisher and plugin slug, then install and activate it.
-2. Follow the Jetpack connection flow from wp-admin. Use the WordPress.com account that should own or administer the connection; do not use a disposable personal account for an organizational site.
-3. Return to wp-admin and confirm that Jetpack reports the site as connected.
-4. Enable one required feature at a time. Test it before adding another so a failure has a narrow cause.
+2. Follow the site-registration flow. Registration creates the site relationship and blog token; it is separate from authorizing a WordPress user.
+3. Authorize the WordPress.com account that should own the connection. The first authorized user becomes the connection owner. A site can be registered without every local user being connected, and some features require the current user connection as well as the site connection.
+4. Inspect the selected module's active state, plan class, `requires_connection`, `requires_user_connection`, and auto-activation behavior. Enable only a required module and test its observable result before changing another.
 
 If policy prevents a live service connection, use the development guidance for an offline test environment. Offline mode is a developer aid, not proof that service-backed features work.
 
@@ -39,11 +46,13 @@ Use the [product catalog](/docs/products/) to move to the dedicated product guid
 
 Use a private or staging page when possible:
 
-1. Confirm wp-admin has no Jetpack connection or authentication warning.
+1. Run the current connection health checks and distinguish site token, overall connection, connection owner, current user, outbound HTTP and HTTPS, identity mismatch, token health, remote reachability, port, and XML parser results.
 2. Exercise one observable outcome: submit a form, view a test page, publish a controlled post, or run the feature's own status check.
 3. Test as both an administrator and the least-privileged role expected to use the feature.
 4. Check the public page in a signed-out browser session and on a narrow viewport if the feature changes front-end output.
 5. Record the WordPress, PHP, Jetpack, theme, and relevant standalone-plugin versions with the result.
+
+Offline mode is a development state, not a connection repair. It can make local features available while service-backed features remain unavailable, so accidental offline mode should be checked explicitly when the site otherwise appears connected.
 
 ## Change or remove a feature
 

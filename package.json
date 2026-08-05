@@ -7,9 +7,10 @@
   "license": "GPL-2.0-or-later",
   "scripts": {
     "test": "node scripts/validate-docs.mjs",
-    "playground": "wp-playground-cli start --blueprint=playground/local-blueprint.json --mount=$PWD/docs:/wordpress/docspress-source-docs --no-auto-mount --reset"
+    "playground": "wp-playground-cli start --blueprint=playground/local-blueprint.json --mount=$PWD/docs:/wordpress/docspress-source-docs --no-auto-mount --reset --login"
   },
   "devDependencies": {
+    "@wordpress/block-serialization-default-parser": "5.52.0",
     "@wp-playground/blueprints": "3.1.46",
     "@wp-playground/cli": "3.1.46",
     "docspress": "https://github.com/Automattic/docspress/archive/517050b6aceb09cacd7dc66c0df2023718e57bd9.tar.gz",

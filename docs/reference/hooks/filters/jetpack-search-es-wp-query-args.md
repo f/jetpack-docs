@@ -10,9 +10,19 @@ hook_name: jetpack_search_es_wp_query_args
 hook_type: filter
 since: "5.0.0"
 deprecated: false
-source_url: https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/search/src/classic-search/class-classic-search.php#L517-L551
+source_url: https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/search/src/classic-search/class-classic-search.php#L517-L551
 last_reviewed: "2026-08-05"
 ---
+<!-- jetpack-docs:hook-blocks:start -->
+
+<!-- wp:docspress/fields {"title":"jetpack_search_es_wp_query_args callback parameters","description":"The filter contract verified at the pinned source revision.","fields":[{"name":"$search_args","type":"array\u003cstring, mixed\u003e","required":true,"defaultValue":"","description":"the current WP_Query-style arguments that Jetpack Search will validate and translate. Earlier callbacks may already have changed them.","values":"","deprecated":false},{"name":"$query","type":"WP_Query","required":true,"defaultValue":"","description":"the original WordPress query from which Jetpack Search built the arguments.","values":"","deprecated":false}],"searchable":true,"compact":false} /-->
+
+<!-- wp:docspress/colorful-code {"language":"php","filename":"jetpack_search_es_wp_query_args.php","code":"\u003c?php\n/**\n * Plugin Name: My Jetpack Search result cap\n */\n\nfunction myjp_cap_jetpack_search_results( $search_args, $query ) {\n\tif ( ! $query-\u003eis_main_query() || ! $query-\u003eis_search() ) {\n\t\treturn $search_args;\n\t}\n\n\t$requested                      = max( 1, (int) $search_args['posts_per_page'] );\n\t$limit                          = min( 10, $requested );\n\t$search_args['posts_per_page'] = $limit;\n\t$query-\u003eset( 'posts_per_page', $limit );\n\n\treturn $search_args;\n}\nadd_filter( 'jetpack_search_es_wp_query_args', 'myjp_cap_jetpack_search_results', 10, 2 );","highlightedLines":"","showLineNumbers":true,"caption":"Minimal external filter callback","diffMode":"none","copyMode":"all","annotations":[]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Preserve the jetpack_search_es_wp_query_args contract","content":"\u003cp\u003eRegister this callback outside Jetpack source, preserve earlier callback decisions, and follow the compatibility and failure cautions on this page. A source occurrence is not permission to depend on surrounding private implementation.\u003c/p\u003e","collapsible":false,"open":true} /-->
+
+<!-- wp:docspress/result {"status":"success","title":"Source contract pinned for jetpack_search_es_wp_query_args","content":"\u003cp\u003eThe classification, callback shape, example, and verification steps on this page are tied to an immutable public source permalink.\u003c/p\u003e","meta":"Since: 5.0.0 · Deprecated: no"} /-->
+<!-- jetpack-docs:hook-blocks:end -->
 
 ## Behavior
 
@@ -84,6 +94,6 @@ Install the example on a disposable connected site with more than ten matching i
 
 ## Source
 
-[View Classic Search's base argument construction and filter application at the pinned revision.](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/search/src/classic-search/class-classic-search.php#L517-L551)
+[View Classic Search's base argument construction and filter application at the pinned revision.](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/search/src/classic-search/class-classic-search.php#L517-L551)
 
-[View the equivalent Inline Search hook application at the pinned revision.](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/search/src/inline-search/class-inline-search.php#L170-L204)
+[View the equivalent Inline Search hook application at the pinned revision.](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/search/src/inline-search/class-inline-search.php#L170-L204)

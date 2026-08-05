@@ -18,8 +18,10 @@ The Connection package owns site registration, site tokens, user authorization, 
 
 ## Sync flow
 
+<!-- wp:docspress/diagram {"title":"Connection and Sync data path","type":"sequence","source":"WordPress -> Sync: Observe an allowlisted event\nSync -> Queue: Serialize approved fields\nQueue -> Connection: Batch a signed request\nConnection -> Jetpack service: Transport the batch\nJetpack service -> Connection: Acknowledge or retry","caption":"Connection authenticates transport; Sync decides which approved events and fields enter the queue."} /-->
+
 The Sync package listens to allowlisted WordPress events, creates Sync actions, queues them, serializes approved data, and transports batches through the connection. Initial and full sync operations reconcile broader state; incremental actions capture ongoing changes.
 
 Consumers must tolerate queued delivery, duplicate or replayed events, connection interruption, and version differences. Adding data to Sync is a product and privacy decision, not merely a hook registration.
 
-Primary pinned sources: [Connection package](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/connection), [Sync package](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/sync), and [Status package](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/status).
+Primary pinned sources: [Connection package](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/connection), [Sync package](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/sync), and [Status package](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/status).

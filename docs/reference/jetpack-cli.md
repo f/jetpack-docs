@@ -24,4 +24,4 @@ sidebar_collapsed: true
 | Install Docker WordPress | `jp docker install` |
 | Clean a build | `jp clean plugins/jetpack` |
 
-Run `jp <command> --help` for current options. In a worktree, seed its Docker environment before starting containers. Commands and project scripts are authoritative in the [pinned CLI source](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/tools/cli).
+Run `jp <command> --help` for current options. In a worktree, seed its Docker environment before starting containers. Commands and project scripts are authoritative in the [pinned CLI source](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/tools/cli).

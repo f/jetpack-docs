@@ -22,4 +22,4 @@ Review the user outcome first, then trace the implementation through its public 
 
 Leave actionable comments tied to behavior and risk. Distinguish blocking correctness issues from optional alternatives, and re-check resolved threads against the new diff. Do not ask authors to replace `$$next-version$$`; that placeholder is intentional.
 
-See the [pinned review guide](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/code-reviews.md).
+See the [pinned review guide](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/code-reviews.md).

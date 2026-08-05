@@ -21,4 +21,4 @@ Jetpack blocks are WordPress blocks. Their stable boundary begins with registere
 
 Do not import files from another project's generated `build` or `dist` directory. Do not change saved attributes without a migration path. A block that works in the editor is incomplete until its published content renders after reload, with Jetpack inactive where graceful fallback is expected.
 
-Primary sources: [Jetpack Blocks package](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/blocks), [Jetpack block extensions](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack/extensions/blocks), and the [WordPress Block Editor Handbook](https://developer.wordpress.org/block-editor/).
+Primary sources: [Jetpack Blocks package](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/blocks), [Jetpack block extensions](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack/extensions/blocks), and the [WordPress Block Editor Handbook](https://developer.wordpress.org/block-editor/).

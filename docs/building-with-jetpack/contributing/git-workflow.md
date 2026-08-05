@@ -22,4 +22,4 @@ Inspect `git status`, `git diff`, and `git diff --check` before every commit. St
 
 For dependency conflicts, regenerate lock data using the owning tool instead of manually combining lock-file sections. After a merge involving released project versions, run `tools/fixup-project-versions.sh`.
 
-The detailed public rules are in the [pinned Git workflow](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/git-workflow.md).
+The detailed public rules are in the [pinned Git workflow](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/git-workflow.md).

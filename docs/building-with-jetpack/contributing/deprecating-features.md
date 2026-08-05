@@ -21,4 +21,4 @@ Deprecation is a compatibility promise: existing integrations keep working for a
 
 Do not silence notices globally or repurpose a deprecated hook name with a new signature. For blocks and stored content, preserve parsing and rendering even after the inserter UI changes.
 
-The source procedure is the pinned [deprecation guide](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/deprecating-features.md); see also [deprecated hooks](../../reference/hooks/deprecated-hooks-and-replacements.md).
+The source procedure is the pinned [deprecation guide](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/deprecating-features.md); see also [deprecated hooks](../../reference/hooks/deprecated-hooks-and-replacements.md).

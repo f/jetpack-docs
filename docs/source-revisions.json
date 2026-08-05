@@ -4,7 +4,24 @@
   "sources": {
     "jetpack": {
       "repository": "Automattic/jetpack",
-      "ref": "5c0d27877fd19504a8de8b8618950d51876816a0"
+      "ref": "a6e65435e2531e430c75024f1183612f31263d1f"
+    },
+    "jetpack_crm": {
+      "repository": "Automattic/jetpack-crm",
+      "ref": "8dbe017c517819a7f6c583dff6e4cb8819a7f72e"
+    },
+    "jetpack_crm_api_docs": {
+      "repository": "Automattic/jetpack-crm-api-docs",
+      "ref": "c2a53fd8d6de70f27c87bd15652ccacf0ecabd3f"
+    },
+    "jetpack_crm_code_examples": {
+      "repository": "Automattic/jetpack-crm-code-examples",
+      "ref": "b0048ae9c73a8bd3d2029aa343317240ecb7af73"
+    },
+    "akismet": {
+      "repository": "plugins.svn.wordpress.org/akismet",
+      "tag": "5.7",
+      "revision": 3514187
     },
     "docspress": {
       "repository": "Automattic/docspress",

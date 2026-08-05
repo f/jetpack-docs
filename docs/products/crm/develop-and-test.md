@@ -6,15 +6,22 @@ document_type: how-to
 sidebar_position: 30
 sidebar_collapsed: false
 product: crm
-source_ref: 5c0d27877fd19504a8de8b8618950d51876816a0
+source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---
 
-Core CRM work belongs in [Automattic/jetpack-crm](https://github.com/Automattic/jetpack-crm), not `/projects/plugins` in the Jetpack monorepo. The CRM repository has its own dependencies, local WordPress environment, tests, lint rules, build, changelog, and release process. Treat its current README and contribution files as authoritative.
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/file-tree {"root":"Automattic/jetpack-crm","tree":"Automattic/jetpack-crm @ 8dbe017c\n  Makefile\n  admin/contact/\n  admin/company/\n  includes/\n  extensions/\nAutomattic/jetpack\n  projects/packages/forms/","caption":"Jetpack CRM source ownership at the pinned review revision.","collapsible":true,"open":true} /-->
+
+<!-- wp:docspress/terminal-session {"title":"Jetpack CRM project checks","shell":"bash","prompt":"$","command":"make help\nmake install\nmake up\nmake test\nmake test-acceptance\nmake lint\nmake lint-staged\nmake lint-css\nmake build\nmake wp\nmake logs","output":"Run only the checks defined by the owning project, then verify the changed behavior in WordPress."} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
+Core CRM work belongs in [Automattic/jetpack-crm at the reviewed revision](https://github.com/Automattic/jetpack-crm/tree/8dbe017c517819a7f6c583dff6e4cb8819a7f72e), not `/projects/plugins` in the Jetpack monorepo. The CRM repository has its own dependencies, local WordPress environment, tests, lint rules, build, changelog, and release process. The reviewed minimums are WordPress 6.0 and PHP 7.4.
 
 ## Work in the CRM repository
 
-At the time of this review, the public [CRM development README](https://github.com/Automattic/jetpack-crm/blob/trunk/README.md) exposes its common workflow through a Makefile:
+The pinned [CRM development README](https://github.com/Automattic/jetpack-crm/blob/8dbe017c517819a7f6c583dff6e4cb8819a7f72e/README.md#L14-L54) exposes its common workflow through a Makefile:
 
 ```bash
 make help
@@ -23,6 +30,11 @@ make up
 make test
 make lint
 make build
+make test-acceptance
+make lint-staged
+make lint-css
+make wp
+make logs
 ```
 
 Re-read `make help` and the README before running these commands because CRM evolves independently from the pinned Jetpack revision. Use synthetic contacts and transactions in the local environment. Never seed development with a production CRM export.
@@ -40,7 +52,7 @@ Submit core fixes and their tests to the CRM repository. Do not add a Jetpack mo
 
 ## Work on a Jetpack integration
 
-If the defect is in Jetpack Forms discovery or its integration UI, work in [`projects/packages/forms`](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/forms) and use the Jetpack workflow:
+If the defect is in Jetpack Forms discovery or its integration UI, work in [projects/packages/forms](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/forms) and use the Jetpack workflow:
 
 ```bash
 jp build packages/forms --deps
