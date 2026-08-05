@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
@@ -56,6 +57,7 @@ const lifecycleFiles = [
 	'troubleshoot-and-support.md',
 ];
 const jetpackSourceRef = 'a6e65435e2531e430c75024f1183612f31263d1f';
+const jetpackLogoSha256 = 'b0b13407f513b3ff48c43c894e4bea550dc4e98dfb59c4f43f28d21c98b42962';
 const jetpackCrmSourceRef = '8dbe017c517819a7f6c583dff6e4cb8819a7f72e';
 const akismetSourceRevision = 3514187;
 const docsPressSourceRef = '517050b6aceb09cacd7dc66c0df2023718e57bd9';
@@ -418,6 +420,7 @@ const authoredTextFiles = new Set( [
 	path.join( repositoryRoot, 'package-lock.json' ),
 	path.join( repositoryRoot, 'playground', 'blueprint.json' ),
 	path.join( repositoryRoot, 'playground', 'local-blueprint.json' ),
+	path.join( repositoryRoot, 'playground', 'configure-jetpack-site.php' ),
 	path.join( repositoryRoot, '.github', 'workflows', 'validate-docs.yml' ),
 ] );
 for ( const filename of authoredTextFiles ) {
@@ -947,10 +950,13 @@ for ( const [ pattern, label ] of [
 	}
 }
 
+const configuratorPath = path.join( repositoryRoot, 'playground', 'configure-jetpack-site.php' );
+const configurator = await fs.readFile( configuratorPath, 'utf8' );
 const blueprintPath = path.join( repositoryRoot, 'playground', 'blueprint.json' );
 const blueprintContent = await fs.readFile( blueprintPath, 'utf8' );
 validatePublicWordPressUrls( blueprintContent, blueprintPath );
 const blueprint = JSON.parse( blueprintContent );
+const jetpackLogoUrl = `https://raw.githubusercontent.com/Automattic/jetpack/${ jetpackSourceRef }/projects/packages/forms/src/contact-form/images/field-icons/jetpack-logo%402x.png`;
 const blueprintResult = validateBlueprint( blueprint );
 if ( ! blueprintResult.valid ) {
 	fail( `playground/blueprint.json: ${ JSON.stringify( blueprintResult.errors ) }` );
@@ -964,7 +970,7 @@ if ( blueprint.preferredVersions?.php !== '8.3' || blueprint.preferredVersions?.
 const gitResources = blueprint.steps.flatMap( step => [ step.pluginData, step.themeData, step.filesTree ] ).filter( Boolean );
 const docsPressResources = gitResources.filter( item => item.url === 'https://github.com/Automattic/docspress' );
 if (
-	JSON.stringify( blueprint.steps.map( step => step.step ) ) !== JSON.stringify( [ 'installPlugin', 'installTheme', 'writeFiles', 'runPHP' ] ) ||
+	JSON.stringify( blueprint.steps.map( step => step.step ) ) !== JSON.stringify( [ 'installPlugin', 'installTheme', 'writeFiles', 'mkdir', 'writeFile', 'writeFile', 'runPHP' ] ) ||
 	gitResources.length !== 3 ||
 	docsPressResources.length !== 2 ||
 	! docsPressResources.some( resource => resource.path === 'plugins/docspress-blocks' ) ||
@@ -985,6 +991,21 @@ const remoteWriteFiles = blueprint.steps.find( step => step.step === 'writeFiles
 if ( remoteWriteFiles?.writeToPath !== '/wordpress/docspress-source-docs' || remoteWriteFiles.filesTree !== docsResource ) {
 	fail( 'playground/blueprint.json: docs must be written to the upstream mounted-directory import path' );
 }
+const remoteWriteFileSteps = blueprint.steps.filter( step => step.step === 'writeFile' );
+const remoteMkdirSteps = blueprint.steps.filter( step => step.step === 'mkdir' );
+const remoteConfigurator = remoteWriteFileSteps.find( step => step.path === '/wordpress/jetpack-docs-playground/configure-jetpack-site.php' );
+const remoteLogo = remoteWriteFileSteps.find( step => step.path === '/wordpress/jetpack-docs-logo.png' );
+if (
+	remoteWriteFileSteps.length !== 2 ||
+	remoteMkdirSteps.length !== 1 ||
+	remoteMkdirSteps[0].path !== '/wordpress/jetpack-docs-playground' ||
+	typeof remoteConfigurator?.data !== 'string' ||
+	remoteConfigurator.data !== configurator ||
+	remoteLogo?.data?.resource !== 'url' ||
+	remoteLogo.data.url !== jetpackLogoUrl
+) {
+	fail( 'playground/blueprint.json: must embed the reviewed configurator and load the immutable pinned Jetpack logo into their approved paths' );
+}
 const remoteBootstrap = blueprint.steps.find( step => step.step === 'runPHP' )?.code || '';
 if (
 	! remoteBootstrap.includes( '/playground/import-local-docs.php' ) ||
@@ -995,9 +1016,11 @@ if (
 	! remoteBootstrap.includes( "'sidebarId'" ) ||
 	! remoteBootstrap.includes( "'sidebarRoot'" ) ||
 	! remoteBootstrap.includes( 'wp-block-code' ) ||
-	! remoteBootstrap.includes( 'docspress_flush_llms_rewrite_rules' )
+	! remoteBootstrap.includes( 'docspress_flush_llms_rewrite_rules' ) ||
+	! remoteBootstrap.includes( "require '/wordpress/jetpack-docs-playground/configure-jetpack-site.php'" ) ||
+	! remoteBootstrap.includes( 'jetpack_docs_configure_site();' )
 ) {
-	fail( 'playground/blueprint.json: must use the upstream importer and preserve llms.txt/.md source metadata' );
+	fail( 'playground/blueprint.json: must use the upstream importer, preserve llms.txt/.md source metadata, and apply native Jetpack editor defaults' );
 }
 
 const localBlueprintPath = path.join( repositoryRoot, 'playground', 'local-blueprint.json' );
@@ -1018,13 +1041,22 @@ if (
 }
 const localResources = localBlueprint.steps.flatMap( step => [ step.pluginData, step.themeData, step.filesTree ] ).filter( Boolean );
 if (
-	JSON.stringify( localBlueprint.steps.map( step => step.step ) ) !== JSON.stringify( [ 'installPlugin', 'installTheme', 'runPHP' ] ) ||
+	JSON.stringify( localBlueprint.steps.map( step => step.step ) ) !== JSON.stringify( [ 'installPlugin', 'installTheme', 'writeFile', 'runPHP' ] ) ||
 	localResources.length !== 2 ||
 	localResources.some( resource => resource.resource !== 'git:directory' || resource.url !== 'https://github.com/Automattic/docspress' || resource.ref !== docsPressSourceRef || resource.refType !== 'commit' ) ||
 	! localResources.some( resource => resource.path === 'plugins/docspress-blocks' ) ||
 	! localResources.some( resource => resource.path === 'theme' )
 ) {
 	fail( 'playground/local-blueprint.json: must install only the two approved immutable DocsPress resources' );
+}
+const localWriteFileSteps = localBlueprint.steps.filter( step => step.step === 'writeFile' );
+if (
+	localWriteFileSteps.length !== 1 ||
+	localWriteFileSteps[0].path !== '/wordpress/jetpack-docs-logo.png' ||
+	localWriteFileSteps[0].data?.resource !== 'url' ||
+	localWriteFileSteps[0].data.url !== jetpackLogoUrl
+) {
+	fail( 'playground/local-blueprint.json: must load only the immutable pinned Jetpack logo outside the mounted repository paths' );
 }
 const localBootstrap = localBlueprint.steps.find( step => step.step === 'runPHP' )?.code || '';
 if (
@@ -1036,9 +1068,92 @@ if (
 	! localBootstrap.includes( "'sidebarId'" ) ||
 	! localBootstrap.includes( "'sidebarRoot'" ) ||
 	! localBootstrap.includes( 'wp-block-code' ) ||
-	! localBootstrap.includes( 'docspress_flush_llms_rewrite_rules' )
+	! localBootstrap.includes( 'docspress_flush_llms_rewrite_rules' ) ||
+	! localBootstrap.includes( "require '/wordpress/jetpack-docs-playground/configure-jetpack-site.php'" ) ||
+	! localBootstrap.includes( 'jetpack_docs_configure_site();' )
 ) {
-	fail( 'playground/local-blueprint.json: must use the upstream importer and preserve llms.txt/.md source metadata' );
+	fail( 'playground/local-blueprint.json: must use the upstream importer, preserve llms.txt/.md source metadata, and apply native Jetpack editor defaults' );
+}
+if ( localBootstrap !== remoteBootstrap ) {
+	fail( 'playground blueprints: local and remote PHP bootstraps must remain byte-for-byte identical' );
+}
+
+const phpLint = spawnSync( 'php', [ '-l', configuratorPath ], { encoding: 'utf8' } );
+if ( phpLint.error || phpLint.status !== 0 ) {
+	fail( `playground/configure-jetpack-site.php: PHP lint failed: ${ phpLint.error?.message || phpLint.stderr || phpLint.stdout }` );
+}
+for ( const marker of [
+	"'/styles/theme/jetpack.json'",
+	"'Jetpack' !== ( $variation['title'] ?? '' )",
+	"'#069e08'",
+	"'isGlobalStylesUserThemeJSON' => true",
+	"'version'                     => (int) $variation['version']",
+	'jetpack_docs_enable_color_modes',
+	"$variation['styles']['color']['background']                    = 'var(--dp-paper)';",
+	"$variation['styles']['color']['text']                          = 'var(--dp-copy)';",
+	"$variation['styles']['elements']['caption']['color']['text']   = 'var(--dp-muted)';",
+	"$variation['styles']['elements']['heading']['color']['text']   = 'var(--dp-ink)';",
+	"$variation['styles']['elements']['link']['color']['text']      = 'var(--dp-blue-dark)';",
+	"$variation['styles']['elements']['link'][':hover']['color']['text'] = 'var(--dp-blue)';",
+	'WP_Theme_JSON_Resolver::get_user_data_from_wp_global_styles( $theme, true )',
+	'WP_Theme_JSON_Resolver::clean_cached_data()',
+	"wp_clean_theme_json_cache",
+	"wp_set_current_user",
+	"'wp_template_part'",
+	"wp_set_object_terms( $post_id, 'docspress', 'wp_theme', false )",
+	"wp_set_object_terms( $post_id, 'header', 'wp_template_part_area', false )",
+	"update_post_meta( $post_id, 'origin', 'theme' )",
+	'Jetpack</strong> Developer Docs',
+	'"label":"Docs","url":"/docs/"',
+	'wp:docspress/command-search',
+	'wp:docspress/color-mode-toggle',
+	'https://github.com/f/jetpack-docs',
+	'wp:docspress/docs-menu-toggle',
+	"update_option( 'blogname', 'Jetpack Developer Docs' )",
+	jetpackSourceRef,
+	jetpackLogoSha256,
+] ) {
+	if ( ! configurator.includes( marker ) ) {
+		fail( `playground/configure-jetpack-site.php: required native design contract is missing ${ marker }` );
+	}
+}
+if (
+	configurator.includes( 'wp:docspress/version-switcher' ) ||
+	configurator.includes( '>DocsPress</a>' ) ||
+	configurator.includes( 'github.com/Automattic/docspress' ) ||
+	configurator.includes( '"fontFamily":"ui"' ) ||
+	configurator.includes( 'has-ui-font-family' )
+) {
+	fail( 'playground/configure-jetpack-site.php: header must inherit Jetpack typography and omit the DocsPress brand, repository, and unneeded version control' );
+}
+const headerNowdoc = configurator.match( /return <<<'HTML'\n([\s\S]*?)\nHTML;/ );
+if ( ! headerNowdoc ) {
+	fail( 'playground/configure-jetpack-site.php: native header block markup could not be extracted' );
+} else {
+	const headerBlocks = parseBlocks( headerNowdoc[ 1 ] );
+	const flattenedHeaderBlocks = [];
+	const collectHeaderBlocks = blocks => {
+		for ( const block of blocks ) {
+			flattenedHeaderBlocks.push( block );
+			collectHeaderBlocks( block.innerBlocks || [] );
+		}
+	};
+	collectHeaderBlocks( headerBlocks );
+	if (
+		headerBlocks.length !== 1 ||
+		headerBlocks[ 0 ].blockName !== 'core/group' ||
+		flattenedHeaderBlocks.some( block => ! block.blockName ) ||
+		! flattenedHeaderBlocks.some( block => block.blockName === 'core/site-logo' ) ||
+		! flattenedHeaderBlocks.some( block => block.blockName === 'docspress/color-mode-toggle' )
+	) {
+		fail( 'playground/configure-jetpack-site.php: native header must be one valid serialized group with its Jetpack logo and color-mode control' );
+	}
+}
+for ( const match of configurator.matchAll( /<!-- wp:([a-z0-9-]+(?:\/[a-z0-9-]+)?)/g ) ) {
+	const blockName = match[ 1 ].includes( '/' ) ? match[ 1 ] : `core/${ match[ 1 ] }`;
+	if ( ! blockName.startsWith( 'core/' ) && ! blockName.startsWith( 'docspress/' ) ) {
+		fail( `playground/configure-jetpack-site.php: unsupported header block namespace ${ blockName }` );
+	}
 }
 
 const packageJson = JSON.parse( await fs.readFile( path.join( repositoryRoot, 'package.json' ), 'utf8' ) );
@@ -1049,6 +1164,7 @@ if (
 	packageJson.devDependencies?.docspress !== `https://github.com/Automattic/docspress/archive/${ docsPressSourceRef }.tar.gz` ||
 	packageJson.devDependencies?.yaml !== '2.9.0' ||
 	! packageJson.scripts?.playground?.includes( '--blueprint=playground/local-blueprint.json' ) ||
+	! packageJson.scripts?.playground?.includes( '--mount=$PWD/playground:/wordpress/jetpack-docs-playground' ) ||
 	! packageJson.scripts?.playground?.includes( '--login' )
 ) {
 	fail( 'package.json: DocsPress and Playground validation dependencies must remain exactly pinned' );
@@ -1065,8 +1181,16 @@ if (
 }
 const readme = await fs.readFile( path.join( repositoryRoot, 'README.md' ), 'utf8' );
 const expectedPlaygroundLink = 'https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2Ff%2Fjetpack-docs%2Fmain%2Fplayground%2Fblueprint.json&page-title=Jetpack%20Docs';
-if ( ! readme.includes( expectedPlaygroundLink ) || ! readme.includes( docsPressSourceRef ) || ! readme.includes( '--blueprint=playground/local-blueprint.json' ) ) {
-	fail( 'README.md: remote and mounted local Playground links must use the approved repository and DocsPress pin' );
+if (
+	! readme.includes( expectedPlaygroundLink ) ||
+	! readme.includes( docsPressSourceRef ) ||
+	! readme.includes( '--blueprint=playground/local-blueprint.json' ) ||
+	! readme.includes( '--mount="$PWD/playground:/wordpress/jetpack-docs-playground"' ) ||
+	! readme.includes( 'native Jetpack Global Style' ) ||
+	! readme.includes( 'light and dark modes' ) ||
+	! readme.includes( 'Appearance → Editor' )
+) {
+	fail( 'README.md: remote and mounted local Playground instructions must document the approved pins and editable native Jetpack defaults' );
 }
 for ( const contributionMarker of [ 'Fork `f/jetpack-docs`', 'npm test', 'open a pull request' ] ) {
 	if ( ! readme.includes( contributionMarker ) ) {

@@ -4,7 +4,7 @@ Source-controlled documentation for using Jetpack, working with Jetpack through 
 
 [![Open Jetpack Docs in WordPress Playground](https://img.shields.io/badge/WordPress%20Playground-Open-3858E9?logo=wordpress&logoColor=white)](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2Ff%2Fjetpack-docs%2Fmain%2Fplayground%2Fblueprint.json&page-title=Jetpack%20Docs)
 
-The browser Playground installs the upstream DocsPress theme and blocks plugin, imports this repository's `docs/` directory, applies its five contextual sidebars, signs you in, and opens `/docs/`. It is temporary: reload the link to start from a clean site.
+The browser Playground installs the upstream DocsPress theme and blocks plugin, imports this repository's `docs/` directory, applies its five contextual sidebars, activates DocsPress's native Jetpack Global Style and a Jetpack documentation header, signs you in, and opens `/docs/`. The design is the default in every fresh Playground, preserves DocsPress's light and dark modes, and remains editable with ordinary WordPress controls in **Appearance → Editor**. The site is temporary: reload the link to start from a clean installation.
 
 ## Documentation paths
 
@@ -26,12 +26,13 @@ From this repository root, run:
 npx @wp-playground/cli@3.1.46 start \
   --blueprint=playground/local-blueprint.json \
   --mount="$PWD/docs:/wordpress/docspress-source-docs" \
+  --mount="$PWD/playground:/wordpress/jetpack-docs-playground" \
   --no-auto-mount \
   --reset \
   --login
 ```
 
-This is the upstream DocsPress mounted-directory workflow with its theme, blocks, and importer pinned to commit `517050b6aceb09cacd7dc66c0df2023718e57bd9`. The repository-local blueprint keeps unpushed files authoritative and adds the source metadata needed for DocsPress's `.md` pages and `llms.txt`; it does not copy or replace the upstream importer. `--login` keeps the local browser session editable. Directory landing pages must be named `index.md`; do not add a `README.md` inside `docs/`.
+This is the upstream DocsPress mounted-directory workflow with its theme, blocks, and importer pinned to commit `517050b6aceb09cacd7dc66c0df2023718e57bd9`. The repository-local blueprint keeps unpushed documentation and Playground configuration authoritative, adds the source metadata needed for DocsPress's `.md` pages and `llms.txt`, and saves the upstream Jetpack style plus Jetpack header as native WordPress editor state. It does not copy or replace the upstream importer, theme, or blocks. `--login` keeps the local browser session editable. Directory landing pages must be named `index.md`; do not add a `README.md` inside `docs/`.
 
 ## Validate changes
 
@@ -50,7 +51,7 @@ Validation checks front matter, routes, local links and anchors, all five sideba
 4. Run the mounted Playground command above and verify the changed page, navigation, search, `.md` output, and a narrow viewport when presentation is affected.
 5. Commit only the documentation and supporting validation changes for the task, push the branch, and open a pull request explaining the outcome and verification.
 
-Do not add generated WordPress content, credentials, a theme, a site plugin, or production synchronization settings to a contribution.
+Do not add generated WordPress content, credentials, a theme, a site plugin, or production synchronization settings to a contribution. Playground visual defaults belong in the one-time configurator and must remain native Global Styles or editable template parts.
 
 ## Authoring rules
 
@@ -73,7 +74,7 @@ npm test
 
 ## Scope
 
-This repository contains documentation and its Playground/validation settings only. It does not contain a WordPress theme, site plugin, product code, production publishing workflow, or WordPress credentials.
+This repository contains documentation and its Playground/validation settings only. Its one-time configurator saves native WordPress editor state; it is not a theme or site plugin and does not run after setup. The repository contains no product code, production publishing workflow, or WordPress credentials.
 
 ## License
 

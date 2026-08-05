@@ -7,7 +7,7 @@
   "license": "GPL-2.0-or-later",
   "scripts": {
     "test": "node scripts/validate-docs.mjs",
-    "playground": "wp-playground-cli start --blueprint=playground/local-blueprint.json --mount=$PWD/docs:/wordpress/docspress-source-docs --no-auto-mount --reset --login"
+    "playground": "wp-playground-cli start --blueprint=playground/local-blueprint.json --mount=$PWD/docs:/wordpress/docspress-source-docs --mount=$PWD/playground:/wordpress/jetpack-docs-playground --no-auto-mount --reset --login"
   },
   "devDependencies": {
     "@wordpress/block-serialization-default-parser": "5.52.0",
