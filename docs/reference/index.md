@@ -3,8 +3,8 @@ title: Reference
 description: Verified Jetpack hooks, REST behavior, packages, blocks, connection, compatibility, and data boundaries.
 audience: developer
 document_type: reference
-sidebar_position: 60
-sidebar_collapsed: false
+sidebar_position: 50
+sidebar_collapsed: true
 ---
 
 Use these pages when implementation depends on an exact interface. Product guides explain outcomes; reference pages define contracts and point to immutable source at `Automattic/jetpack@a6e65435e2531e430c75024f1183612f31263d1f`.

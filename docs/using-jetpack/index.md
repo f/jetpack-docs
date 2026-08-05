@@ -4,7 +4,7 @@ description: Follow a practical path from installation through day-to-day operat
 audience: site-user
 document_type: overview
 sidebar_position: 10
-sidebar_collapsed: false
+sidebar_collapsed: true
 source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---

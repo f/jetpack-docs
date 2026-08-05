@@ -4,7 +4,7 @@ description: "Protect comments and form submissions with Akismet's externally ma
 audience: "site-user"
 document_type: "overview"
 sidebar_position: 1
-sidebar_collapsed: false
+sidebar_collapsed: true
 product: "akismet"
 last_reviewed: "2026-08-05"
 ---

@@ -4,7 +4,7 @@ description: Make a focused, testable contribution to the Jetpack monorepo.
 audience: contributor
 document_type: tutorial
 sidebar_position: 110
-sidebar_collapsed: false
+sidebar_collapsed: true
 ---
 
 Jetpack's public monorepo contains plugins, PHP packages, JavaScript packages, GitHub Actions, and shared tools. Work from a fork unless you already have repository access.

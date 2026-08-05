@@ -4,7 +4,7 @@ description: Curated Jetpack actions with verified timing and callback parameter
 audience: developer
 document_type: reference
 sidebar_position: 30
-sidebar_collapsed: false
+sidebar_collapsed: true
 ---
 
 Actions notify callbacks and do not consume return values.

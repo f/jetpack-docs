@@ -4,7 +4,7 @@ description: Curated Jetpack filters with verified input and return contracts.
 audience: developer
 document_type: reference
 sidebar_position: 40
-sidebar_collapsed: false
+sidebar_collapsed: true
 ---
 
 Filters pass a value through callbacks. Every callback must return a value compatible with the documented type.

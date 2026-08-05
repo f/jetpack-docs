@@ -4,7 +4,7 @@ description: "Protect WordPress files and database changes with off-site backups
 audience: "site-user"
 document_type: "overview"
 sidebar_position: 1
-sidebar_collapsed: false
+sidebar_collapsed: true
 product: "backup"
 source_ref: "a6e65435e2531e430c75024f1183612f31263d1f"
 last_reviewed: "2026-08-05"

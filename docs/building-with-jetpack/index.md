@@ -3,8 +3,8 @@ title: Building with Jetpack
 description: Choose a supported Jetpack extension surface, build an integration, and verify it against public contracts.
 audience: developer
 document_type: overview
-sidebar_position: 40
-sidebar_collapsed: false
+sidebar_position: 30
+sidebar_collapsed: true
 ---
 
 Jetpack is a family of WordPress plugins plus reusable PHP and JavaScript packages. Start with the narrowest public interface that solves the problem; depending on the product, that may be a WordPress hook, a block extension, a REST route, or a published package.

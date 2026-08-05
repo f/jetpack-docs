@@ -10,7 +10,6 @@ import { parse as parseBlocks } from '@wordpress/block-serialization-default-par
 import { validateBlueprint } from '@wp-playground/blueprints';
 import { CUSTOM_BLOCK_DEFAULTS } from 'docspress/src/block-markdown.js';
 import { collectDesiredPages } from 'docspress/src/docs.js';
-import { readSidebarsRegistry } from 'docspress/src/sidebars.js';
 import { parseDocument } from 'yaml';
 
 const scriptDirectory = path.dirname( fileURLToPath( import.meta.url ) );
@@ -61,17 +60,14 @@ const jetpackLogoSha256 = 'b0b13407f513b3ff48c43c894e4bea550dc4e98dfb59c4f43f28d
 const jetpackCrmSourceRef = '8dbe017c517819a7f6c583dff6e4cb8819a7f72e';
 const akismetSourceRevision = 3514187;
 const docsPressSourceRef = '517050b6aceb09cacd7dc66c0df2023718e57bd9';
-const sidebarsFile = 'docs/sidebars.json';
-const expectedSidebars = {
-	default: 'use',
-	sidebars: {
-		use: '.',
-		agents: 'using-an-agent',
-		build: 'building-with-jetpack',
-		products: 'products',
-		reference: 'reference',
-	},
-};
+const expectedTopLevelNavigation = new Map( [
+	[ 'docs/index.md', 0 ],
+	[ 'docs/using-jetpack/index.md', 10 ],
+	[ 'docs/using-an-agent/index.md', 20 ],
+	[ 'docs/building-with-jetpack/index.md', 30 ],
+	[ 'docs/products/index.md', 40 ],
+	[ 'docs/reference/index.md', 50 ],
+] );
 const allowedCustomBlocks = new Set(
 	Object.keys( CUSTOM_BLOCK_DEFAULTS ).filter( name => ! [ 'docspress/version-notice', 'docspress/version-switcher' ].includes( name ) )
 );
@@ -436,7 +432,9 @@ for ( const filename of authoredTextFiles ) {
 }
 for ( const forbidden of [
 	'docs/manifest.json',
+	'docs/sidebars.json',
 	'docs/sidebars.yml',
+	'docs/sidebars.yaml',
 	'docs/redirects.json',
 	'docs/versions.json',
 	'theme',
@@ -560,6 +558,19 @@ for ( const filename of markdownFiles ) {
 }
 
 const usedCustomBlocks = new Set( [ ...blocksByFile.values() ].flatMap( blocks => [ ...blocks ] ) );
+for ( const [ relativeFilename, expectedPosition ] of expectedTopLevelNavigation ) {
+	const filename = path.join( repositoryRoot, relativeFilename );
+	const page = parsedPages.get( filename );
+	if ( ! page || page.data.sidebar_position !== expectedPosition ) {
+		fail( `${ relativeFilename }: automatic top-level navigation position must be ${ expectedPosition }` );
+	}
+}
+for ( const filename of markdownFiles.filter( item => path.basename( item ) === 'index.md' ) ) {
+	const expectedCollapsed = filename !== path.join( docsRoot, 'index.md' );
+	if ( parsedPages.get( filename )?.data.sidebar_collapsed !== expectedCollapsed ) {
+		fail( `${ relative( filename ) }: automatic navigation section must set sidebar_collapsed to ${ expectedCollapsed }` );
+	}
+}
 for ( const blockName of allowedCustomBlocks ) {
 	if ( ! usedCustomBlocks.has( blockName ) ) {
 		fail( `docs/: the supported ${ blockName } block must have at least one semantic use` );
@@ -1010,17 +1021,22 @@ const remoteBootstrap = blueprint.steps.find( step => step.step === 'runPHP' )?.
 if (
 	! remoteBootstrap.includes( '/playground/import-local-docs.php' ) ||
 	! remoteBootstrap.includes( 'sourceContentBase64' ) ||
-	! remoteBootstrap.includes( '/sidebars.json' ) ||
-	! remoteBootstrap.includes( '_docspress_sidebar_id' ) ||
-	! remoteBootstrap.includes( '_docspress_sidebar_root' ) ||
-	! remoteBootstrap.includes( "'sidebarId'" ) ||
-	! remoteBootstrap.includes( "'sidebarRoot'" ) ||
+	! remoteBootstrap.includes( "'sidebarPosition'" ) ||
+	! remoteBootstrap.includes( "'sidebarCollapsed'" ) ||
+	! remoteBootstrap.includes( "metadata_exists( 'post', $page->ID, '_docspress_sidebar_collapsed' )" ) ||
+	! remoteBootstrap.includes( "delete_post_meta( $page->ID, '_docspress_sidebar_id' )" ) ||
+	! remoteBootstrap.includes( "delete_post_meta( $page->ID, '_docspress_sidebar_root' )" ) ||
 	! remoteBootstrap.includes( 'wp-block-code' ) ||
 	! remoteBootstrap.includes( 'docspress_flush_llms_rewrite_rules' ) ||
 	! remoteBootstrap.includes( "require '/wordpress/jetpack-docs-playground/configure-jetpack-site.php'" ) ||
-	! remoteBootstrap.includes( 'jetpack_docs_configure_site();' )
+	! remoteBootstrap.includes( 'jetpack_docs_configure_site();' ) ||
+	remoteBootstrap.includes( '/sidebars.json' ) ||
+	remoteBootstrap.includes( "update_post_meta( $page->ID, '_docspress_sidebar_id'" ) ||
+	remoteBootstrap.includes( "update_post_meta( $page->ID, '_docspress_sidebar_root'" ) ||
+	remoteBootstrap.includes( "'sidebarId'" ) ||
+	remoteBootstrap.includes( "'sidebarRoot'" )
 ) {
-	fail( 'playground/blueprint.json: must use the upstream importer, preserve llms.txt/.md source metadata, and apply native Jetpack editor defaults' );
+	fail( 'playground/blueprint.json: must import one automatic tree, preserve authored navigation and llms.txt/.md metadata, and apply native Jetpack editor defaults' );
 }
 
 const localBlueprintPath = path.join( repositoryRoot, 'playground', 'local-blueprint.json' );
@@ -1062,17 +1078,22 @@ const localBootstrap = localBlueprint.steps.find( step => step.step === 'runPHP'
 if (
 	! localBootstrap.includes( '/playground/import-local-docs.php' ) ||
 	! localBootstrap.includes( 'sourceContentBase64' ) ||
-	! localBootstrap.includes( '/sidebars.json' ) ||
-	! localBootstrap.includes( '_docspress_sidebar_id' ) ||
-	! localBootstrap.includes( '_docspress_sidebar_root' ) ||
-	! localBootstrap.includes( "'sidebarId'" ) ||
-	! localBootstrap.includes( "'sidebarRoot'" ) ||
+	! localBootstrap.includes( "'sidebarPosition'" ) ||
+	! localBootstrap.includes( "'sidebarCollapsed'" ) ||
+	! localBootstrap.includes( "metadata_exists( 'post', $page->ID, '_docspress_sidebar_collapsed' )" ) ||
+	! localBootstrap.includes( "delete_post_meta( $page->ID, '_docspress_sidebar_id' )" ) ||
+	! localBootstrap.includes( "delete_post_meta( $page->ID, '_docspress_sidebar_root' )" ) ||
 	! localBootstrap.includes( 'wp-block-code' ) ||
 	! localBootstrap.includes( 'docspress_flush_llms_rewrite_rules' ) ||
 	! localBootstrap.includes( "require '/wordpress/jetpack-docs-playground/configure-jetpack-site.php'" ) ||
-	! localBootstrap.includes( 'jetpack_docs_configure_site();' )
+	! localBootstrap.includes( 'jetpack_docs_configure_site();' ) ||
+	localBootstrap.includes( '/sidebars.json' ) ||
+	localBootstrap.includes( "update_post_meta( $page->ID, '_docspress_sidebar_id'" ) ||
+	localBootstrap.includes( "update_post_meta( $page->ID, '_docspress_sidebar_root'" ) ||
+	localBootstrap.includes( "'sidebarId'" ) ||
+	localBootstrap.includes( "'sidebarRoot'" )
 ) {
-	fail( 'playground/local-blueprint.json: must use the upstream importer, preserve llms.txt/.md source metadata, and apply native Jetpack editor defaults' );
+	fail( 'playground/local-blueprint.json: must import one automatic tree, preserve authored navigation and llms.txt/.md metadata, and apply native Jetpack editor defaults' );
 }
 if ( localBootstrap !== remoteBootstrap ) {
 	fail( 'playground blueprints: local and remote PHP bootstraps must remain byte-for-byte identical' );
@@ -1187,6 +1208,8 @@ if (
 	! readme.includes( '--blueprint=playground/local-blueprint.json' ) ||
 	! readme.includes( '--mount="$PWD/playground:/wordpress/jetpack-docs-playground"' ) ||
 	! readme.includes( 'native Jetpack Global Style' ) ||
+	! readme.includes( 'one automatic navigation tree' ) ||
+	! readme.includes( 'do not add a separate sidebar registry' ) ||
 	! readme.includes( 'light and dark modes' ) ||
 	! readme.includes( 'Appearance → Editor' )
 ) {
@@ -1202,22 +1225,6 @@ if ( ! license.includes( 'GNU GENERAL PUBLIC LICENSE' ) || ! license.includes( '
 	fail( 'LICENSE.txt: the complete GPL version 2 text is required' );
 }
 
-let sidebarsRegistry;
-try {
-	sidebarsRegistry = await readSidebarsRegistry( { cwd: repositoryRoot, sidebarsFile } );
-	const actualSidebars = Object.fromEntries(
-		sidebarsRegistry.entries.map( entry => [ entry.id, entry.root || '.' ] )
-	);
-	if (
-		sidebarsRegistry.default !== expectedSidebars.default ||
-		JSON.stringify( actualSidebars ) !== JSON.stringify( expectedSidebars.sidebars )
-	) {
-		fail( 'docs/sidebars.json: expected the approved use, agents, build, products, and reference navigation contexts' );
-	}
-} catch ( error ) {
-	fail( `docs/sidebars.json: ${ error.message }` );
-}
-
 try {
 	const desiredPages = await collectDesiredPages( {
 		cwd: repositoryRoot,
@@ -1228,35 +1235,21 @@ try {
 		rewriteLinks: true,
 		editLink: false,
 		status: 'publish',
-		sidebarsFile,
-		sidebarsRegistry,
 	} );
 	if ( desiredPages.length !== markdownFiles.length ) {
 		fail( `DocsPress collected ${ desiredPages.length } Pages from ${ markdownFiles.length } Markdown files; every directory needs an index.md` );
 	}
-	const expectedRoots = new Map( Object.entries( expectedSidebars.sidebars ).map( ( [ id, root ] ) => [ id, root === '.' ? '' : root ] ) );
-	const seenRoots = new Set();
-	const routeDepth = route => route ? route.split( '/' ).length : 0;
-	const orderedRoots = [ ...expectedRoots.entries() ].sort( ( left, right ) => routeDepth( right[ 1 ] ) - routeDepth( left[ 1 ] ) );
 	for ( const page of desiredPages ) {
-		const expectedSidebar = orderedRoots.find( ( [ , root ] ) => root === '' || page.routeKey === root || page.routeKey.startsWith( `${ root }/` ) );
-		if ( ! expectedSidebar || page.sidebarId !== expectedSidebar[ 0 ] ) {
-			fail( `${ page.sourcePath }: expected sidebar ${ expectedSidebar?.[ 0 ] || '(none)' }, received ${ page.sidebarId || '(none)' }` );
+		if ( page.sidebarId || page.sidebarRoot || page.content.includes( '"sidebarId"' ) || page.content.includes( '"sidebarRoot"' ) ) {
+			fail( `${ page.sourcePath }: automatic navigation must not contain contextual sidebar metadata` );
 		}
-		const expectedRoot = page.routeKey === expectedSidebar?.[ 1 ];
-		if ( Boolean( page.sidebarRoot ) !== expectedRoot ) {
-			fail( `${ page.sourcePath }: sidebarRoot does not match the configured logical root` );
-		}
-		if ( expectedRoot ) {
-			seenRoots.add( page.sidebarId );
-		}
-		if ( ! page.content.includes( `"sidebarId":"${ page.sidebarId }"` ) || ! page.content.includes( `"sidebarRoot":${ Boolean( page.sidebarRoot ) }` ) ) {
-			fail( `${ page.sourcePath }: DocsPress sentinel is missing sidebar context metadata` );
-		}
-	}
-	for ( const sidebarId of expectedRoots.keys() ) {
-		if ( ! seenRoots.has( sidebarId ) ) {
-			fail( `docs/sidebars.json: sidebar ${ sidebarId } does not resolve to an authored root page` );
+		if (
+			! Object.hasOwn( page, 'sidebarPosition' ) ||
+			! Object.hasOwn( page, 'sidebarCollapsed' ) ||
+			! page.content.includes( `"sidebarPosition":${ page.sidebarPosition }` ) ||
+			! page.content.includes( `"sidebarCollapsed":${ page.sidebarCollapsed }` )
+		) {
+			fail( `${ page.sourcePath }: DocsPress sentinel must preserve authored automatic navigation state` );
 		}
 	}
 } catch ( error ) {

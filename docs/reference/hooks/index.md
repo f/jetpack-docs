@@ -4,7 +4,7 @@ description: Curated, source-verified WordPress actions and filters exposed by J
 audience: developer
 document_type: reference
 sidebar_position: 20
-sidebar_collapsed: false
+sidebar_collapsed: true
 ---
 
 This catalog contains hooks selected for external use and verified against the pinned Jetpack revision. It intentionally does not turn every `do_action()` or `apply_filters()` occurrence into a compatibility promise.

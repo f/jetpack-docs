@@ -4,7 +4,7 @@ description: Choose a Jetpack product, then follow its complete usage, extension
 audience: site-user
 document_type: overview
 sidebar_position: 40
-sidebar_collapsed: false
+sidebar_collapsed: true
 source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---

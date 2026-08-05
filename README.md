@@ -4,7 +4,7 @@ Source-controlled documentation for using Jetpack, working with Jetpack through 
 
 [![Open Jetpack Docs in WordPress Playground](https://img.shields.io/badge/WordPress%20Playground-Open-3858E9?logo=wordpress&logoColor=white)](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2Ff%2Fjetpack-docs%2Fmain%2Fplayground%2Fblueprint.json&page-title=Jetpack%20Docs)
 
-The browser Playground installs the upstream DocsPress theme and blocks plugin, imports this repository's `docs/` directory, applies its five contextual sidebars, activates DocsPress's native Jetpack Global Style and a Jetpack documentation header, signs you in, and opens `/docs/`. The design is the default in every fresh Playground, preserves DocsPress's light and dark modes, and remains editable with ordinary WordPress controls in **Appearance → Editor**. The site is temporary: reload the link to start from a clean installation.
+The browser Playground installs the upstream DocsPress theme and blocks plugin, imports this repository's `docs/` directory as one automatic navigation tree, activates DocsPress's native Jetpack Global Style and a Jetpack documentation header, signs you in, and opens `/docs/`. The design is the default in every fresh Playground, preserves DocsPress's light and dark modes, and remains editable with ordinary WordPress controls in **Appearance → Editor**. The site is temporary: reload the link to start from a clean installation.
 
 ## Documentation paths
 
@@ -61,7 +61,7 @@ Do not add generated WordPress content, credentials, a theme, a site plugin, or 
 - Treat public source code and canonical product documentation as evidence; link volatile plan and availability details instead of copying them.
 - Never include credentials, customer data, private WordPress.com URLs, or undocumented service endpoints.
 - Keep compatibility claims tied to the revisions in [`docs/source-revisions.json`](docs/source-revisions.json).
-- Keep the physical Markdown tree authoritative and update [`docs/sidebars.json`](docs/sidebars.json) only when a whole reader context changes.
+- Keep the physical Markdown tree authoritative. Use `sidebar_position` and `sidebar_collapsed` front matter to order and disclose its automatic navigation; do not add a separate sidebar registry.
 
 To reproduce the upstream preservation layer from a checkout at the pinned Jetpack revision, run:
 
