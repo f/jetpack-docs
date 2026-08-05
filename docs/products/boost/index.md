@@ -6,13 +6,20 @@ document_type: "overview"
 sidebar_position: 1
 sidebar_collapsed: false
 product: "boost"
-source_ref: "5c0d27877fd19504a8de8b8618950d51876816a0"
+source_ref: "a6e65435e2531e430c75024f1183612f31263d1f"
 last_reviewed: "2026-08-05"
 ---
 
-Jetpack Boost is a standalone WordPress performance plugin. It does not require the main Jetpack plugin. Boost packages performance changes as modules so you can enable, measure, and, when necessary, roll back one optimization at a time.
+<!-- jetpack-docs:product-blocks:start -->
 
-Depending on the version and services available to the site, those modules can include page caching, critical CSS, deferring non-essential JavaScript, image guidance, Image CDN, and CSS or JavaScript concatenation and minification. Treat the Boost dashboard as the source of truth for the modules available on a particular site; availability can depend on the environment and connected services.
+<!-- wp:docspress/audience-paths {"eyebrow":"Jetpack Boost","title":"Choose the next lifecycle step","description":"Move from a safe Jetpack Boost setup to supported extension, contribution, and diagnosis paths.","paths":[{"title":"Use and configure","description":"Set up Jetpack Boost and verify its primary outcome.","url":"/docs/products/boost/use-and-configure/","cta":"Configure","icon":"settings","accent":"green","newTab":false},{"title":"Extend, hooks, and APIs","description":"Choose a documented surface and respect its ownership boundary.","url":"/docs/products/boost/extend-hooks-and-apis/","cta":"Extend","icon":"plug","accent":"blue","newTab":false},{"title":"Develop and test","description":"Work in the owning source and run project-specific checks.","url":"/docs/products/boost/develop-and-test/","cta":"Develop","icon":"testing","accent":"gold","newTab":false},{"title":"Troubleshoot and support","description":"Isolate the failing layer and collect safe evidence.","url":"/docs/products/boost/troubleshoot-and-support/","cta":"Troubleshoot","icon":"troubleshoot","accent":"coral","newTab":false}],"columns":2,"tone":"paper","textAlign":"left","compact":true,"showNumbers":false,"showIcons":true,"showLinks":true} /-->
+
+<!-- wp:docspress/callout {"tone":"note","title":"Product boundary","content":"\u003cp\u003ePerformance changes can alter page markup, script timing, caching, and external delivery. Keep a rollback path and never exclude a handle before identifying its registered owner.\u003c/p\u003e","collapsible":true,"open":false} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
+Jetpack Boost is a standalone WordPress performance plugin. It does not require the main Jetpack plugin. At the pinned source revision it requires WordPress 6.9 or newer and PHP 7.2 or newer. Boost packages performance changes as modules so you can enable, measure, and, when necessary, roll back one optimization at a time.
+
+The current feature registry includes Critical CSS, Cloud CSS, LCP optimization, Minify JS, Minify CSS, Render-blocking JS, Image Guide, Image CDN, Performance History, Page Cache, and Speculation Rules. A module can be **available**, **active**, **optimizing**, or **ready**; an enabled switch does not prove that generation has finished. Treat the Boost dashboard as the source of truth for the modules and subfeatures available on a particular site because public reachability, hosting, connection, and service eligibility can change that set.
 
 ## Who should use it
 
@@ -35,4 +42,4 @@ Read [Use and configure](/docs/products/boost/use-and-configure/) for the operat
 
 Boost exposes selected PHP actions and filters for compatibility work. Start with [Extend, hooks, and APIs](/docs/products/boost/extend-hooks-and-apis/), and pin any integration to the hook contract you tested. The plugin's admin REST and data-sync routes are implementation details, not a supported remote-management API.
 
-Source evidence: [Boost plugin source at the reviewed revision](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/boost) and [Jetpack Boost support](https://jetpack.com/support/jetpack-boost/).
+Source evidence: [Boost plugin source at the reviewed revision](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/boost) and [Jetpack Boost support](https://jetpack.com/support/jetpack-boost/).

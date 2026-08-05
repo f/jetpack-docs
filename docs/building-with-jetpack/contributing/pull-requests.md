@@ -21,4 +21,4 @@ Before requesting review:
 
 Do not select automatic changelog generation when changelog files are already present. Use status and type labels expected by the repository, and keep the pull request updated when behavior or testing changes.
 
-See the [pinned pull-request guide](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/pull-request.md).
+See the [pinned pull-request guide](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/pull-request.md).

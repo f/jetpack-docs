@@ -10,9 +10,19 @@ hook_name: videopress_get_video_details
 hook_type: filter
 since: "4.0.0"
 deprecated: false
-source_url: https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/videopress/src/utility-functions.php#L78-L90
+source_url: https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/videopress/src/utility-functions.php#L78-L90
 last_reviewed: "2026-08-05"
 ---
+<!-- jetpack-docs:hook-blocks:start -->
+
+<!-- wp:docspress/fields {"title":"videopress_get_video_details callback parameters","description":"The filter contract verified at the pinned source revision.","fields":[{"name":"$data","type":"object","required":true,"defaultValue":"","description":"decoded VideoPress details, read from the transient or the public response. It can be null on an undecodable response because the implementation does not validate the decoded value before applying the filter.","values":"","deprecated":false},{"name":"$guid","type":"string","required":true,"defaultValue":"","description":"the validated, eight-character alphanumeric VideoPress video GUID used for the lookup.","values":"","deprecated":false}],"searchable":true,"compact":false} /-->
+
+<!-- wp:docspress/colorful-code {"language":"php","filename":"videopress_get_video_details.php","code":"\u003c?php\n/**\n * Plugin Name: My VideoPress details extension\n */\n\nfunction myjp_extend_videopress_details( $data, $guid ) {\n\tif ( ! $data instanceof stdClass ) {\n\t\treturn $data;\n\t}\n\n\t$data-\u003emyjp_video_guid = $guid;\n\n\treturn $data;\n}\nadd_filter( 'videopress_get_video_details', 'myjp_extend_videopress_details', 10, 2 );","highlightedLines":"","showLineNumbers":true,"caption":"Minimal external filter callback","diffMode":"none","copyMode":"all","annotations":[]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Preserve the videopress_get_video_details contract","content":"\u003cp\u003eRegister this callback outside Jetpack source, preserve earlier callback decisions, and follow the compatibility and failure cautions on this page. A source occurrence is not permission to depend on surrounding private implementation.\u003c/p\u003e","collapsible":false,"open":true} /-->
+
+<!-- wp:docspress/result {"status":"success","title":"Source contract pinned for videopress_get_video_details","content":"\u003cp\u003eThe classification, callback shape, example, and verification steps on this page are tied to an immutable public source permalink.\u003c/p\u003e","meta":"Since: 4.0.0 · Deprecated: no"} /-->
+<!-- jetpack-docs:hook-blocks:end -->
 
 ## Behavior
 
@@ -99,4 +109,4 @@ Expect `NULL` and no PHP warning. On a disposable VideoPress test site, call `vi
 
 ## Source
 
-[View the filter contract and direct return at the pinned revision.](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/videopress/src/utility-functions.php#L78-L90) The [surrounding function shows GUID validation, retrieval, and cache order](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/videopress/src/utility-functions.php#L47-L90), while the [package initializer controls when the utility file is loaded](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/videopress/src/class-initializer.php#L79-L86).
+[View the filter contract and direct return at the pinned revision.](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/videopress/src/utility-functions.php#L78-L90) The [surrounding function shows GUID validation, retrieval, and cache order](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/videopress/src/utility-functions.php#L47-L90), while the [package initializer controls when the utility file is loaded](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/videopress/src/class-initializer.php#L79-L86).

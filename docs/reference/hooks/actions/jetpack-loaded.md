@@ -10,9 +10,19 @@ hook_name: jetpack_loaded
 hook_type: action
 since: "8.1.0"
 deprecated: false
-source_url: https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack/class.jetpack.php#L1161-L1169
+source_url: https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack/class.jetpack.php#L1161-L1169
 last_reviewed: "2026-08-05"
 ---
+<!-- jetpack-docs:hook-blocks:start -->
+
+<!-- wp:docspress/fields {"title":"jetpack_loaded callback parameters","description":"The action contract verified at the pinned source revision.","fields":[{"name":"$jetpack","type":"Jetpack","required":true,"defaultValue":"","description":"the main plugin class instance for the current request.","values":"","deprecated":false}],"searchable":true,"compact":false} /-->
+
+<!-- wp:docspress/colorful-code {"language":"php","filename":"jetpack_loaded.php","code":"\u003c?php\n/**\n * Plugin Name: My Jetpack ready check\n */\n\nfunction myjp_mark_jetpack_ready( $jetpack ) {\n\tif ( $jetpack instanceof Jetpack ) {\n\t\t$GLOBALS['myjp_jetpack_ready'] = true;\n\t}\n}\nadd_action( 'jetpack_loaded', 'myjp_mark_jetpack_ready', 10, 1 );","highlightedLines":"","showLineNumbers":true,"caption":"Minimal external action callback","diffMode":"none","copyMode":"all","annotations":[]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Preserve the jetpack_loaded contract","content":"\u003cp\u003eRegister this callback outside Jetpack source, preserve earlier callback decisions, and follow the compatibility and failure cautions on this page. A source occurrence is not permission to depend on surrounding private implementation.\u003c/p\u003e","collapsible":false,"open":true} /-->
+
+<!-- wp:docspress/result {"status":"success","title":"Source contract pinned for jetpack_loaded","content":"\u003cp\u003eThe classification, callback shape, example, and verification steps on this page are tied to an immutable public source permalink.\u003c/p\u003e","meta":"Since: 8.1.0 · Deprecated: no"} /-->
+<!-- jetpack-docs:hook-blocks:end -->
 
 ## Behavior
 
@@ -82,4 +92,4 @@ Expect `true`. Deactivate Jetpack and repeat; expect `false` without a PHP warni
 
 ## Source
 
-[View the documented action and call at the pinned revision.](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack/class.jetpack.php#L1161-L1169)
+[View the documented action and call at the pinned revision.](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack/class.jetpack.php#L1161-L1169)

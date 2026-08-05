@@ -6,11 +6,20 @@ document_type: overview
 sidebar_position: 1
 sidebar_collapsed: false
 product: crm
-source_ref: 5c0d27877fd19504a8de8b8618950d51876816a0
+source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---
 
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/audience-paths {"eyebrow":"Jetpack CRM","title":"Choose the next lifecycle step","description":"Move from a safe Jetpack CRM setup to supported extension, contribution, and diagnosis paths.","paths":[{"title":"Use and configure","description":"Set up Jetpack CRM and verify its primary outcome.","url":"/docs/products/crm/use-and-configure/","cta":"Configure","icon":"settings","accent":"green","newTab":false},{"title":"Extend, hooks, and APIs","description":"Choose a documented surface and respect its ownership boundary.","url":"/docs/products/crm/extend-hooks-and-apis/","cta":"Extend","icon":"plug","accent":"blue","newTab":false},{"title":"Develop and test","description":"Work in the owning source and run project-specific checks.","url":"/docs/products/crm/develop-and-test/","cta":"Develop","icon":"testing","accent":"gold","newTab":false},{"title":"Troubleshoot and support","description":"Isolate the failing layer and collect safe evidence.","url":"/docs/products/crm/troubleshoot-and-support/","cta":"Troubleshoot","icon":"troubleshoot","accent":"coral","newTab":false}],"columns":2,"tone":"paper","textAlign":"left","compact":true,"showNumbers":false,"showIcons":true,"showLinks":true} /-->
+
+<!-- wp:docspress/callout {"tone":"note","title":"Product boundary","content":"\u003cp\u003eCRM records can be highly sensitive. Never use a production export for development, and do not grant administrator access merely to bypass a capability problem.\u003c/p\u003e","collapsible":true,"open":false} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
 Jetpack CRM is a separately maintained WordPress plugin for contacts and customer workflows. Its implementation is not part of the Jetpack monorepo. This section gives Jetpack users a stable product route, then sends implementation, API, testing, and support work to the public CRM sources that own it.
+
+The product model includes contacts and companies, quotes, invoices, transactions, a client portal, front-end forms, tasks, segments, WooCommerce Sync, activity logs, aliases, files, tags, custom fields, B2B mode, CSV import, role-based access, currencies, and mail delivery. Enable only the records and extensions the organization actually operates.
 
 ## Follow the lifecycle
 
@@ -24,17 +33,18 @@ Jetpack CRM is a separately maintained WordPress plugin for contacts and custome
 | Need | Owning public source |
 | --- | --- |
 | Current setup and operation | [Jetpack CRM knowledge base](https://kb.jetpackcrm.com/) |
-| Plugin implementation and project tests | [Automattic/jetpack-crm](https://github.com/Automattic/jetpack-crm) |
-| API contract | [Published Jetpack CRM API reference](https://automattic.github.io/jetpack-crm-api-docs/) |
-| Integration examples | [Automattic/jetpack-crm-code-examples](https://github.com/Automattic/jetpack-crm-code-examples) |
+| Plugin implementation and project tests | [Automattic/jetpack-crm at the reviewed revision](https://github.com/Automattic/jetpack-crm/tree/8dbe017c517819a7f6c583dff6e4cb8819a7f72e) |
+| API contract | [API documentation source at the reviewed revision](https://github.com/Automattic/jetpack-crm-api-docs/tree/c2a53fd8d6de70f27c87bd15652ccacf0ecabd3f) |
+| Integration examples | [Code examples at the reviewed revision](https://github.com/Automattic/jetpack-crm-code-examples/tree/b0048ae9c73a8bd3d2029aa343317240ecb7af73) |
 | Published plugin | [WordPress.org Jetpack CRM listing](https://wordpress.org/plugins/zero-bs-crm/) |
 
-The `source_ref` on this page pins the Jetpack revision used to verify cross-product references, such as the Forms integration. It does not pin the separately released CRM repository. Re-check CRM's current default branch and release documentation before implementing a change.
+The page's `source_ref` pins Jetpack for cross-product references such as Forms. CRM itself is separately pinned in this repository's `docs/source-revisions.json` registry to `8dbe017c517819a7f6c583dff6e4cb8819a7f72e`; its API docs and code examples have their own immutable revisions.
 
 ## Prerequisites and data responsibility
 
 - A WordPress site where an authorized administrator can install the `zero-bs-crm` plugin.
-- Defined roles for reading, editing, exporting, and deleting customer records.
+- WordPress 6.0 or newer and PHP 7.4 or newer at the reviewed CRM revision.
+- An explicit assignment of CRM Admin, Contact Manager, Quote Manager, Invoice Manager, Transaction Manager, Contact, and Mail Manager roles. These map to object-specific capabilities rather than one generic CRUD/export switch.
 - A backup and retention plan appropriate for contacts, notes, transactions, and enabled extensions.
 - A documented legal basis and privacy notice for the customer data the organization collects.
 

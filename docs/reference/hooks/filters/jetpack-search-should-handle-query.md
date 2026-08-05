@@ -10,9 +10,19 @@ hook_name: jetpack_search_should_handle_query
 hook_type: filter
 since: "5.6.0"
 deprecated: false
-source_url: https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/search/src/classic-search/class-classic-search.php#L2012-L2030
+source_url: https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/search/src/classic-search/class-classic-search.php#L2012-L2030
 last_reviewed: "2026-08-05"
 ---
+<!-- jetpack-docs:hook-blocks:start -->
+
+<!-- wp:docspress/fields {"title":"jetpack_search_should_handle_query callback parameters","description":"The filter contract verified at the pinned source revision.","fields":[{"name":"$should_handle","type":"bool","required":true,"defaultValue":"","description":"Jetpack Search's current decision. The initial value is whether $query is the main WordPress query and a search query; an earlier callback may have changed it.","values":"","deprecated":false},{"name":"$query","type":"WP_Query","required":true,"defaultValue":"","description":"the query being evaluated. Read its flags and query variables; do not execute it again from the callback.","values":"","deprecated":false}],"searchable":true,"compact":false} /-->
+
+<!-- wp:docspress/colorful-code {"language":"php","filename":"jetpack_search_should_handle_query.php","code":"\u003c?php\n/**\n * Plugin Name: My local-search exception\n */\n\nfunction myjp_register_local_search_query_var( $query_vars ) {\n\t$query_vars[] = 'my_local_search';\n\n\treturn $query_vars;\n}\nadd_filter( 'query_vars', 'myjp_register_local_search_query_var' );\n\nfunction myjp_should_jetpack_handle_query( $should_handle, $query ) {\n\tif ( ! $should_handle ) {\n\t\treturn false;\n\t}\n\n\treturn '1' !== (string) $query-\u003eget( 'my_local_search' );\n}\nadd_filter( 'jetpack_search_should_handle_query', 'myjp_should_jetpack_handle_query', 10, 2 );","highlightedLines":"","showLineNumbers":true,"caption":"Minimal external filter callback","diffMode":"none","copyMode":"all","annotations":[]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Preserve the jetpack_search_should_handle_query contract","content":"\u003cp\u003eRegister this callback outside Jetpack source, preserve earlier callback decisions, and follow the compatibility and failure cautions on this page. A source occurrence is not permission to depend on surrounding private implementation.\u003c/p\u003e","collapsible":false,"open":true} /-->
+
+<!-- wp:docspress/result {"status":"success","title":"Source contract pinned for jetpack_search_should_handle_query","content":"\u003cp\u003eThe classification, callback shape, example, and verification steps on this page are tied to an immutable public source permalink.\u003c/p\u003e","meta":"Since: 5.6.0 · Deprecated: no"} /-->
+<!-- jetpack-docs:hook-blocks:end -->
 
 ## Behavior
 
@@ -86,6 +96,6 @@ Install the example on a disposable connected site with Jetpack Search active. V
 
 ## Source
 
-[View the default decision, parameter documentation, and filter application at the pinned revision.](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/search/src/classic-search/class-classic-search.php#L2012-L2030)
+[View the default decision, parameter documentation, and filter application at the pinned revision.](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/search/src/classic-search/class-classic-search.php#L2012-L2030)
 
-[View Instant Search's inherited decision in its `posts_pre_query` path at the pinned revision.](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/search/src/instant-search/class-instant-search.php#L161-L185)
+[View Instant Search's inherited decision in its posts_pre_query path at the pinned revision.](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/search/src/instant-search/class-instant-search.php#L161-L185)

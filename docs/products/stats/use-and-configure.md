@@ -6,9 +6,16 @@ document_type: how-to
 sidebar_position: 10
 sidebar_collapsed: false
 product: stats
-source_ref: 5c0d27877fd19504a8de8b8618950d51876816a0
+source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---
+
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/flow {"start":1,"steps":[{"title":"Choose a collection policy","content":"\u003cp\u003eDefine consent, excluded roles or visitors, retention expectations, and who may view reports.\u003c/p\u003e"},{"title":"Enable the correct Stats surface","content":"\u003cp\u003eConfirm the package or main-plugin integration loads without duplicating another analytics snippet.\u003c/p\u003e"},{"title":"Verify collection and reporting","content":"\u003cp\u003eUse a controlled signed-out visit, inspect consent and blockers, then allow for documented processing time.\u003c/p\u003e"}]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Permissions and data boundary","content":"\u003cp\u003eMetrics and custom dimensions must not carry personal or unapproved data. Compare analytics tools only after aligning consent, exclusions, timezone, bots, and metric definitions.\u003c/p\u003e","collapsible":false,"open":true} /-->
+<!-- jetpack-docs:product-blocks:end -->
 
 ## Decide before collecting
 
@@ -23,6 +30,10 @@ Do not add custom tracking values that contain names, email addresses, account I
 3. Review the available privacy, visitor exclusion, and access settings rather than accepting defaults without a policy decision.
 4. Confirm only intended WordPress roles can reach the Stats dashboard.
 5. Purge only the necessary public-page cache if the tracking markup was added after a cached page was generated.
+
+The source-defined settings are `admin_bar`, `roles` (roles granted `view_stats`), `count_roles` (logged-in roles whose visits are counted), `do_not_track`, `honor_cookie_consent`, and `enable_odyssey_stats`. Review each independently. `honor_cookie_consent` integrates with the WP Consent API only when its gate is enabled; test the unavailable, late-loading, granted, denied, and changed states.
+
+At this revision, the stored `do_not_track` setting and the tracking runtime are not a single proven contract: runtime collection checks the `jetpack_honor_dnt_header_for_stats` filter, whose default is false. Do not promise that toggling the stored option alone changes collection until the implementation is reconciled on the installed version.
 
 ## Verify collection
 

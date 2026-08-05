@@ -20,4 +20,4 @@ Each project declares its own build and test scripts in `composer.json`. Read th
 
 Use `projects/plugins/jetpack` for the Jetpack plugin shell and modules, while reusable behavior commonly lives in `projects/packages`. Generated `_inc/build`, `dist`, or vendor output is not the design source unless project instructions explicitly say otherwise.
 
-Browse the [pinned project tree](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects) and then use [Jetpack CLI](jetpack-cli.md) with a project identifier such as `plugins/jetpack` or `packages/connection`.
+Browse the [pinned project tree](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects) and then use [Jetpack CLI](jetpack-cli.md) with a project identifier such as `plugins/jetpack` or `packages/connection`.

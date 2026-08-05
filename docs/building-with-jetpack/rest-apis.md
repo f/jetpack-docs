@@ -17,7 +17,7 @@ Jetpack extends the WordPress REST API. A route is usable only when its owning p
 4. Check the HTTP status before reading data; a JSON body can be a `WP_Error` representation rather than a success payload.
 
 ```js
-const response = await fetch( '/wp-json/jetpack/v4/connection', {
+const response = await fetch( '/wp-json/jetpack/v4/settings', {
 	credentials: 'same-origin',
 	headers: { 'X-WP-Nonce': window.myPlugin.restNonce },
 } );

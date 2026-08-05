@@ -21,7 +21,7 @@
         },
         {
           "label": "Jetpack source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack"
         }
       ],
       "source_paths": [
@@ -43,7 +43,7 @@
         },
         {
           "label": "Forms package source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/forms"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/forms"
         }
       ],
       "source_paths": [
@@ -66,11 +66,11 @@
         },
         {
           "label": "AI Assistant block source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack/extensions/blocks/ai-assistant"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack/extensions/blocks/ai-assistant"
         },
         {
           "label": "Jetpack AI Client source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/js-packages/ai-client"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/js-packages/ai-client"
         }
       ],
       "source_paths": [
@@ -94,15 +94,15 @@
         },
         {
           "label": "Jetpack CRM source",
-          "url": "https://github.com/Automattic/jetpack-crm"
+          "url": "https://github.com/Automattic/jetpack-crm/tree/8dbe017c517819a7f6c583dff6e4cb8819a7f72e"
         },
         {
           "label": "Jetpack CRM API documentation",
-          "url": "https://automattic.github.io/jetpack-crm-api-docs/"
+          "url": "https://github.com/Automattic/jetpack-crm-api-docs/tree/c2a53fd8d6de70f27c87bd15652ccacf0ecabd3f"
         },
         {
           "label": "Jetpack CRM code examples",
-          "url": "https://github.com/Automattic/jetpack-crm-code-examples"
+          "url": "https://github.com/Automattic/jetpack-crm-code-examples/tree/b0048ae9c73a8bd3d2029aa343317240ecb7af73"
         }
       ],
       "source_paths": []
@@ -126,7 +126,7 @@
         },
         {
           "label": "Jetpack Social source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/social"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/social"
         }
       ],
       "source_paths": [
@@ -151,7 +151,7 @@
         },
         {
           "label": "Stats package source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/stats"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/stats"
         }
       ],
       "source_paths": [
@@ -175,7 +175,7 @@
         },
         {
           "label": "Jetpack Boost source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/boost"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/boost"
         }
       ],
       "source_paths": [
@@ -200,12 +200,14 @@
         },
         {
           "label": "Jetpack Search source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/search"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/search"
         }
       ],
       "source_paths": [
         "projects/plugins/search",
-        "projects/packages/search"
+        "projects/packages/search",
+        "projects/packages/sync/src/modules/class-search.php",
+        "projects/plugins/jetpack/modules/search.php"
       ]
     },
     {
@@ -223,7 +225,7 @@
         },
         {
           "label": "Jetpack VideoPress source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/videopress"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/videopress"
         }
       ],
       "source_paths": [
@@ -250,7 +252,7 @@
         },
         {
           "label": "Akismet public source",
-          "url": "https://plugins.svn.wordpress.org/akismet/"
+          "url": "https://plugins.trac.wordpress.org/browser/akismet/tags/5.7?rev=3514187"
         }
       ],
       "source_paths": []
@@ -270,7 +272,7 @@
         },
         {
           "label": "Backup plugin source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/backup"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/backup"
         }
       ],
       "source_paths": [
@@ -294,13 +296,16 @@
         },
         {
           "label": "Jetpack Protect source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/protect"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/protect"
         }
       ],
       "source_paths": [
         "projects/plugins/protect",
         "projects/packages/protect-models",
-        "projects/packages/protect-status"
+        "projects/packages/protect-status",
+        "projects/packages/account-protection",
+        "projects/packages/waf",
+        "projects/js-packages/scan"
       ]
     },
     {
@@ -318,7 +323,7 @@
         },
         {
           "label": "Jetpack Scan package source",
-          "url": "https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/scan"
+          "url": "https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/scan"
         }
       ],
       "source_paths": [

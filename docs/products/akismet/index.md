@@ -9,9 +9,16 @@ product: "akismet"
 last_reviewed: "2026-08-05"
 ---
 
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/audience-paths {"eyebrow":"Akismet Anti-spam","title":"Choose the next lifecycle step","description":"Move from a safe Akismet Anti-spam setup to supported extension, contribution, and diagnosis paths.","paths":[{"title":"Use and configure","description":"Set up Akismet Anti-spam and verify its primary outcome.","url":"/docs/products/akismet/use-and-configure/","cta":"Configure","icon":"settings","accent":"green","newTab":false},{"title":"Extend, hooks, and APIs","description":"Choose a documented surface and respect its ownership boundary.","url":"/docs/products/akismet/extend-hooks-and-apis/","cta":"Extend","icon":"plug","accent":"blue","newTab":false},{"title":"Develop and test","description":"Work in the owning source and run project-specific checks.","url":"/docs/products/akismet/develop-and-test/","cta":"Develop","icon":"testing","accent":"gold","newTab":false},{"title":"Troubleshoot and support","description":"Isolate the failing layer and collect safe evidence.","url":"/docs/products/akismet/troubleshoot-and-support/","cta":"Troubleshoot","icon":"troubleshoot","accent":"coral","newTab":false}],"columns":2,"tone":"paper","textAlign":"left","compact":true,"showNumbers":false,"showIcons":true,"showLinks":true} /-->
+
+<!-- wp:docspress/callout {"tone":"note","title":"Product boundary","content":"\u003cp\u003eAkismet evaluates submitted content and request metadata. Minimize fields, document the disclosure, protect keys, and never put real visitor submissions into development fixtures.\u003c/p\u003e","collapsible":true,"open":false} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
 Akismet checks comments and other supported submissions for spam. It combines a WordPress plugin with the Akismet service: the site sends relevant submission and request context, receives a classification, and lets moderators review the result.
 
-**Ownership boundary:** Akismet is maintained outside the Jetpack monorepo. Its public plugin source is in [WordPress.org's Akismet SVN repository](https://plugins.svn.wordpress.org/akismet/), its integration contract is the [Akismet developer documentation](https://akismet.com/developers/), and user guidance is at [Akismet Support](https://akismet.com/support/). The Jetpack source revision used for the rest of this site is an inventory reference only; do not use Jetpack `jp` commands or Jetpack package paths for Akismet development.
+**Ownership boundary:** Akismet is maintained outside the Jetpack monorepo. This review pins Akismet 5.7 at [WordPress.org SVN revision 3514187](https://plugins.trac.wordpress.org/browser/akismet/tags/5.7?rev=3514187); its integration contract is the [Akismet developer documentation](https://akismet.com/developers/), and user guidance is at [Akismet Support](https://akismet.com/support/). Do not use Jetpack `jp` commands or Jetpack package paths for Akismet development.
 
 ## Where Akismet fits
 
@@ -28,5 +35,7 @@ An anti-spam decision is probabilistic. Keep a moderation and recovery path so a
 5. Review the spam queue regularly during rollout and mark mistakes as spam or not spam.
 
 Do not put the API key in browser JavaScript, page source, documentation, screenshots, or a public repository.
+
+At the reviewed 5.7 release, Akismet requires WordPress 5.8 or newer and PHP 7.2 or newer. Its agent-facing Abilities and Connectors support require the corresponding WordPress APIs and remain subject to Akismet configuration and permissions.
 
 Continue with [Use and configure](/docs/products/akismet/use-and-configure/). Developers building a non-WordPress or custom-form integration should use [Extend, hooks, and APIs](/docs/products/akismet/extend-hooks-and-apis/) and the canonical developer contract.

@@ -6,15 +6,22 @@ document_type: how-to
 sidebar_position: 30
 sidebar_collapsed: false
 product: stats
-source_ref: 5c0d27877fd19504a8de8b8618950d51876816a0
+source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---
 
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/file-tree {"root":"Automattic/jetpack","tree":"projects/packages/\n  stats/\n  stats-admin/\nprojects/plugins/jetpack/modules/stats.php","caption":"Jetpack Stats source ownership at the pinned review revision.","collapsible":true,"open":true} /-->
+
+<!-- wp:docspress/terminal-session {"title":"Jetpack Stats project checks","shell":"bash","prompt":"$","command":"jp test php packages/stats\njp phan packages/stats\njp test php packages/stats-admin\njp phan packages/stats-admin\njp build plugins/jetpack \u002d\u002ddeps","output":"Run only the checks defined by the owning project, then verify the changed behavior in WordPress."} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
 Stats behavior is split across:
 
-- [`projects/packages/stats`](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/stats) for collection and report clients.
-- [`projects/packages/stats-admin`](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/stats-admin) for Stats administration integration.
-- [`projects/plugins/jetpack/modules/stats.php`](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack/modules/stats.php) for main-plugin module loading and compatibility behavior.
+- [projects/packages/stats](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/stats) for collection and report clients.
+- [projects/packages/stats-admin](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/stats-admin) for Stats administration integration.
+- [projects/plugins/jetpack/modules/stats.php](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack/modules/stats.php) for main-plugin module loading and compatibility behavior.
 
 Change the owning package first. Do not duplicate collection logic in the plugin module.
 
@@ -54,6 +61,8 @@ Use focused tests during iteration, then run the complete relevant project suite
 - Connected report success, `WP_Error`, timeout, empty result, cached result, and cache bypass where supported.
 - Administrator, permitted non-administrator, and unauthorized dashboard users.
 - Activation, upgrade, deactivation, and coexistence with another plugin that loads the same package through Jetpack Autoloader.
+- All seven ability schemas, feature gates, read/write annotations, `view_stats` and `manage_options` callbacks, partial sub-call failures, and the `partial`/`errors` envelope.
+- Settings role validation, including preventing an empty `roles` list; WP Consent API unavailable, late, allowed, denied, and changed states; report cache hit, bypass, malformed cache, and cached `WP_Error`.
 
 Fixtures must use synthetic visits and identifiers. Do not call the production Stats service from a unit test or record visitor IPs, cookies, connected-site credentials, or report payloads in snapshots.
 

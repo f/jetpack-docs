@@ -1,0 +1,349 @@
+{
+  "version": 1,
+  "reviewed_at": "2026-08-05",
+  "upstream": {
+    "repository": "Automattic/jetpack",
+    "ref": "a6e65435e2531e430c75024f1183612f31263d1f",
+    "docs_tree": "66564705886854cfbb3c089df4fe603e8075ec5a"
+  },
+  "files": [
+    {
+      "source_path": "docs/automated-testing.md",
+      "source_blob": "e6ffa2c1ed21fa2e1bcfe85de6f59b160d9e9c59",
+      "source_sha256": "1c21192ce0f985f6ffe2c0101e9f952ced0926fc78f24db30da08891de5348b4",
+      "source_bytes": 4572,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/automated-testing.md"
+      ],
+      "preserved_body_sha256": "f41a2e8b6a4b9ac8600ef6743d244bd3dc55c58ff58be67627d4c6492ad017bb"
+    },
+    {
+      "source_path": "docs/code-reviews.md",
+      "source_blob": "e8f3afa92e35a22a332bb7d84b697d7e959929c4",
+      "source_sha256": "96a1730883b2cb6b764a798f8523d44899b1f575e97bf3c13adff35f98720b5c",
+      "source_bytes": 1592,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/code-reviews.md"
+      ],
+      "preserved_body_sha256": "f9f383c842275c371868796ee1fceeff5975a6bf119aa21aa4db8ba61bdd434b"
+    },
+    {
+      "source_path": "docs/coding-guidelines.md",
+      "source_blob": "4679e0dfe34fa76fa8759feb8626c6a033ac8549",
+      "source_sha256": "b3091f3f49799cc87f43c21a5e240153d8e7feb15cd05df9343d47b05b7794b4",
+      "source_bytes": 9720,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/coding-guidelines.md"
+      ],
+      "preserved_body_sha256": "76b38c5496f35c0f11e63e52dbd130b332fd7ba0a31a5320b994e3c789625b63"
+    },
+    {
+      "source_path": "docs/CONTRIBUTING.md",
+      "source_blob": "ed8ec86a7ede3ad0c33e4a1e359815fd42b42d75",
+      "source_sha256": "43caee4b0fce77effa5596df76706771dab03eb17a8382b8a76532cd5ad763f4",
+      "source_bytes": 3293,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/index.md"
+      ],
+      "preserved_body_sha256": "5f7384c16cfb339743d1301365074bb8ec3c051e0c087482aaa8c3eb51afb342"
+    },
+    {
+      "source_path": "docs/deprecating-features.md",
+      "source_blob": "a1cf741e4fc1b54d1b903b9b5a6c4014b40a863b",
+      "source_sha256": "452595d3cbc259e4dea776fec07dfd8be193f7c600a917ee29a993d0cc72bb05",
+      "source_bytes": 3560,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/deprecating-features.md"
+      ],
+      "preserved_body_sha256": "52e856dab129895f44a47afcc0c2659fa06d318b7f6f3302ce534dbdd4aaab66"
+    },
+    {
+      "source_path": "docs/development-environment.md",
+      "source_blob": "434a7631511d6cb037e4a331b0508b063bf573fc",
+      "source_sha256": "9a3716337b80b1c20929c7576a8f9c07d3651082e3045c5081a228819d6b882d",
+      "source_bytes": 24483,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/development-environment.md"
+      ],
+      "preserved_body_sha256": "688d39125956198ed0890b1f5f864c109d2f362d22891efcac281ee03317a504"
+    },
+    {
+      "source_path": "docs/examples/bootstrap.php",
+      "source_blob": "1103a03f9c0d13f0f659b29eb95bfb02ef924743",
+      "source_sha256": "e283517715fc864a99d7bef202fa3af603519b12c74ed33a3725b17b2031127b",
+      "source_bytes": 3545,
+      "mode": "legacy-example",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/examples/legacy-plugin-bootstrap.php"
+      ]
+    },
+    {
+      "source_path": "docs/examples/unison-sample.prf",
+      "source_blob": "e397245abc627d120ce0ab0e41bb59811c312deb",
+      "source_sha256": "617c63ca1933de21687b6d46c87e5c0293b462b13cd36b2547162c1f1d9268af",
+      "source_bytes": 1203,
+      "mode": "preserved-byte-for-byte",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/advanced/examples/unison-sample.prf"
+      ]
+    },
+    {
+      "source_path": "docs/git-workflow.md",
+      "source_blob": "ccb35850f08b83f586df4c9e52a393211da6e355",
+      "source_sha256": "1bf835d104150112d3b4493427006aa158a44620139147edeedd6193b1a69af2",
+      "source_bytes": 7124,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/git-workflow.md"
+      ],
+      "preserved_body_sha256": "3e19aeac3b0b3155f68e3ebbdeca4366d9e51dd3b1f8fbe67c51411b5b500481"
+    },
+    {
+      "source_path": "docs/guides/report-bugs.md",
+      "source_blob": "74f971d802160f5914f8b1132327aa70408a143e",
+      "source_sha256": "e31a8dd6e92476c474eadb9c6a05ff727f244c3b4be0011754575c0fbe52526f",
+      "source_bytes": 4093,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "using-jetpack/report-a-bug.md"
+      ],
+      "preserved_body_sha256": "92947596bd56b5cc955fc84feec103c12f3f719d99d97a9a3dfa17d153581e0c"
+    },
+    {
+      "source_path": "docs/monorepo.md",
+      "source_blob": "3b9842ac02721b9492ec8a2fd4b7d7eb772b26ee",
+      "source_sha256": "1f016ff1c20ba1769d437c49dd6ed110a238c914a89f2105fc2d0e3e39064c0c",
+      "source_bytes": 48337,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/monorepo.md"
+      ],
+      "preserved_body_sha256": "05d34557bfb515204c84f5cb8bcc4af6f52684db8c8c194286463c61c53bfd83"
+    },
+    {
+      "source_path": "docs/partners/README.md",
+      "source_blob": "cc56eb7f692e266fa3dee46dd7f46e3ffd89d233",
+      "source_sha256": "4849864407ec0e166deffe7e975ea41408aeecdbff2cfe54bdd246b000a59c91",
+      "source_bytes": 323,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "reference/hosting-partners.md"
+      ],
+      "preserved_body_sha256": "438e77874459102313bacefb7d91c7c4adc7bc72b1c568d49ff61efd51f77045"
+    },
+    {
+      "source_path": "docs/pull-request.md",
+      "source_blob": "226d422b144e1091f32df8bfbeedd4c246e505b2",
+      "source_sha256": "1c26fe24645500a548b76c7912df6095f23214b9a205c06ef74a8f59ef90f22e",
+      "source_bytes": 5105,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/pull-request.md"
+      ],
+      "preserved_body_sha256": "f5d842ab3f641c3ee94704ec6c31012a397027bc572ecab99a2e561a0fcdee76"
+    },
+    {
+      "source_path": "docs/quick-start.md",
+      "source_blob": "9307c1f76c43dab8a0f2741195090ef93872fc23",
+      "source_sha256": "c2d3ef9faf3c1661ebb0672aa47a2fd1b8b8c8af4579209a714d45218942b17a",
+      "source_bytes": 8024,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/quick-start.md"
+      ],
+      "preserved_body_sha256": "5f54e43591074b139a861541944fd80d98c0d6608474a770e367741f73435825"
+    },
+    {
+      "source_path": "docs/release-management.md",
+      "source_blob": "9dbc9f20c2d9b1b190a7ad1481cc20d74277a17f",
+      "source_sha256": "721bccabe27560065c8fb55864d88b6adc31974e6389b996087a93475a1d029e",
+      "source_bytes": 5307,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/release-management.md"
+      ],
+      "preserved_body_sha256": "e996973f404c5a62c0c3d72f7ccdc9925ab3fa8e26552d2f230c9882b3cdd387"
+    },
+    {
+      "source_path": "docs/rest-api.md",
+      "source_blob": "837a2347672d5f914187f8c5efd5f2e7444cbbce",
+      "source_sha256": "696c9444e861404399cdcf284fb03ad0da6202c8c57443f82b03830ec91c8132",
+      "source_bytes": 20325,
+      "mode": "historical-sanitized",
+      "destinations": [
+        "reference/rest-api/historical-jetpack-v4-inventory.md"
+      ],
+      "preserved_body_sha256": "56e0b6c3ee94b8930bbd57f8d756b34186702412353dc9d42238b2027f43832d"
+    },
+    {
+      "source_path": "docs/testing/beta-testing.md",
+      "source_blob": "5c8fcfdc9bd18407733208650a4d469aa7443deb",
+      "source_sha256": "5e4879b68c19311af46c4540ed3c67346b43e774ed2007c39e71b1941d9e1c5b",
+      "source_bytes": 1384,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/beta-testing.md"
+      ],
+      "preserved_body_sha256": "ac3754223fc0108ede4e1871c956e13384f2df5e3562ec35c63ce6323dd7ddc9"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/mapping.json",
+      "source_blob": "291b8ced3792df6cabbfb0b08178ede8df42ab39",
+      "source_sha256": "53e7d0ca70ef93f226e63a82babe1dddd8224be2d64cb51ea1aa45fd75fa6c1b",
+      "source_bytes": 848,
+      "mode": "historical-source-snapshot",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/source-mapping.json"
+      ]
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/README.md",
+      "source_blob": "5627085f20cf647b903f91b0165b6497050acaf1",
+      "source_sha256": "f7e9a90fa4fe463244a3b7f97bc0cc595a20b919ea4f380ae5869a8a77da9e09",
+      "source_bytes": 236,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/index.md"
+      ],
+      "preserved_body_sha256": "c956e9edb6bda53e1fb136eafc03665bffc720cf35ac3f297fee22a9649ace20"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/regression-checklist.md",
+      "source_blob": "f1daf606aee41bdc6af8007c3fefbce1378f35c0",
+      "source_sha256": "847dfd627f88fb9f9c93c17c0aabfe18c92f0e11a25fcff280aba870251abcfe",
+      "source_bytes": 1811,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/global.md"
+      ],
+      "preserved_body_sha256": "ebc3ea6833629679bc7d48ad21ff35ba193cd5a6cfcfa47f53d36b0d0968b5e6"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/test-suites/extensions/all.md",
+      "source_blob": "95d70b445f86284b603a7c47f1c058b89435603d",
+      "source_sha256": "b042de66cab9402c879dded9d45e9242363ca7e3b61bbacf05059956ec232e44",
+      "source_bytes": 457,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/editor/index.md"
+      ],
+      "preserved_body_sha256": "c7af22532264d1f759a4717e9cff93f289c5db5b43fe0f954b276b5ba9f8e301"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/test-suites/extensions/blocks/contact-form.md",
+      "source_blob": "7a0daff07dad4bd5b4347a58680ed8f4f6685877",
+      "source_sha256": "d1cf04fb9d46f600f1b49b38ac509f70c2ba47cf826bc8b10efa93f1f6f81982",
+      "source_bytes": 490,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/editor/contact-form.md"
+      ],
+      "preserved_body_sha256": "330cd0654d4ed19f248ba94e18a1b6e6310a85dc2ab343f989cf0e78a400a60c"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/test-suites/extensions/blocks/memberships.md",
+      "source_blob": "4bdf2cdc9565ad94dae84727dbc0bb26d760fafc",
+      "source_sha256": "f3e0c013ac5688269a7298a86589e39b0113c6ae36c8b135463a77155f119419",
+      "source_bytes": 812,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/editor/memberships.md"
+      ],
+      "preserved_body_sha256": "ae2533a01974b0a2efc4bbaa3ab0bce3dc330fb4c27555be627bd93cdbb91f5b"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/test-suites/modules/publicize.md",
+      "source_blob": "a0ac3f79a4cb7edd18b39bd94826fe31e160797e",
+      "source_sha256": "8e0372be09ab7f8704d72582cf0915f94da3204df20751ce204e47b9193e27b4",
+      "source_bytes": 112,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/social.md"
+      ],
+      "preserved_body_sha256": "629bfe96c473a0ca8e03eb75937f6845878200251b743f7f251317b2f05c9a6b"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/test-suites/modules/stats.md",
+      "source_blob": "8443d5a39d55cdeb1ea0625fbfdb07de53a35231",
+      "source_sha256": "6c9adae8e3adc148c5f0219b4590b8c305544cef73abf5796c16afcec798d098",
+      "source_bytes": 161,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/stats.md"
+      ],
+      "preserved_body_sha256": "5426147888b76ddb0719c766a1e95ff9f3d7682d8a13d69545e5ac392bcd099e"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/test-suites/packages/connection.md",
+      "source_blob": "d023366aca89ba7a2ff4a31b2b5b5218f542b79e",
+      "source_sha256": "2bdeb2b4c81e737520db5777b90d65d204a48aa9aa79519b88789506bb46a800",
+      "source_bytes": 526,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/connection.md"
+      ],
+      "preserved_body_sha256": "984ce3a38a15765e5ba5fa3093f152580b606472945f8ba3d218673ab46d3aa8"
+    },
+    {
+      "source_path": "docs/testing/regression-checklist/test-suites/packages/sync.md",
+      "source_blob": "db7954269bfd823b1976540c422a390d579b4203",
+      "source_sha256": "e754828622924ccfb0142b53e033dd2a173b5465633615c0bdb8552287e3d62f",
+      "source_bytes": 117,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/regression/sync.md"
+      ],
+      "preserved_body_sha256": "2437cb11a5ecd82cc16ba5078e27a1a7b0dafcfe6818362b9a98fcfac191597e"
+    },
+    {
+      "source_path": "docs/testing/testing-tips.md",
+      "source_blob": "d338aa96586fc2f7b5062f002f061c27da0d87a3",
+      "source_sha256": "cf188a0806408d505430ed5ee68ff73bbc5ce7cfb707a938a981f8d875ba2837",
+      "source_bytes": 138,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/testing/testing-tips.md"
+      ],
+      "preserved_body_sha256": "dd9353e130599a397441b2a9f842341254332d8bdf943baca799da1e263901e7"
+    },
+    {
+      "source_path": "docs/translations.md",
+      "source_blob": "56ec460f9cbae154a198162b3862fb3e54d2059b",
+      "source_sha256": "a26965a6bfa054129114935074722b2b0b3b0c96693319ea8bf41a18d7bf5314",
+      "source_bytes": 1227,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "using-jetpack/help-translate.md"
+      ],
+      "preserved_body_sha256": "e7afd46cd15c6c2d38bc148efd448d03bfc366d411bd0b3f1bc30304d3355593"
+    },
+    {
+      "source_path": "docs/unison-wordpress-com.md",
+      "source_blob": "e3678787544e7b226aea2c3527aec96697ba7f90",
+      "source_sha256": "69acf7a03b78a1f3070f7df2178a2168e5a9f83fbd54ead95a7050b45ba8d848",
+      "source_bytes": 1175,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/advanced/unison-wordpress-com.md"
+      ],
+      "preserved_body_sha256": "d29fe60eadc56fc85e0eeaae4f921c098bef720657682a6e99a00a5a505082d7"
+    },
+    {
+      "source_path": "docs/writing-a-good-changelog-entry.md",
+      "source_blob": "85b5d7b8209910ccaa6cbcdc8a64a94b931ef047",
+      "source_sha256": "6e798ee4fba92efa534cada05e30e984262bdb0a7f08d83cc6a44f68084ea156",
+      "source_bytes": 2769,
+      "mode": "preserved-normalized",
+      "destinations": [
+        "building-with-jetpack/contributing/repository-guides/changelog-entries.md"
+      ],
+      "preserved_body_sha256": "1ba3019ccaf9879da9eee50bc7b4ffab0035c3368638742604e42dcce7b34e91"
+    }
+  ]
+}

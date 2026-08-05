@@ -6,15 +6,22 @@ document_type: "troubleshooting"
 sidebar_position: 5
 sidebar_collapsed: false
 product: "backup"
-source_ref: "5c0d27877fd19504a8de8b8618950d51876816a0"
+source_ref: "a6e65435e2531e430c75024f1183612f31263d1f"
 last_reviewed: "2026-08-05"
 ---
+
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/troubleshooter {"title":"Triage VaultPress Backup","intro":"Use synthetic data on staging when possible. Record the first failed boundary before changing configuration.","startId":"setup","questions":[{"id":"setup","question":"Is there a recent completed backup and an independent way to regain access if restore fails?","yesLabel":"Yes","yesNext":"reproduce","noLabel":"No or unknown","noNext":"setup-check"},{"id":"reproduce","question":"Can the same symptom be reproduced with a minimal synthetic case on staging?","yesLabel":"Yes","yesNext":"isolate","noLabel":"No","noNext":"collect"}],"outcomes":[{"id":"setup-check","status":"warning","title":"Restore the product prerequisite","content":"\u003cp\u003eCheck plugin connection, activity state, storage or download errors, credentials, disk space, and support status before retrying.\u003c/p\u003e"},{"id":"isolate","status":"neutral","title":"Isolate the failing layer","content":"\u003cp\u003eChange one variable at a time, preserve logs and versions, and compare product, WordPress, browser, theme, plugin, cache, and service boundaries.\u003c/p\u003e"},{"id":"collect","status":"neutral","title":"Collect safe evidence","content":"\u003cp\u003eRecord the exact action, role, time, versions, and sanitized error. Do not include tokens, private URLs, customer content, or raw production data.\u003c/p\u003e"}],"showProgress":true} /-->
+
+<!-- wp:docspress/result {"status":"success","title":"Verification target","content":"\u003cp\u003eThe selected restore scope completes and the same critical content, login, media, and transaction checks pass afterward.\u003c/p\u003e","meta":"Recheck after every change"} /-->
+<!-- jetpack-docs:product-blocks:end -->
 
 During an incident, preserve the current evidence. Do not uninstall Backup, disconnect Jetpack, delete activity entries, or start several restores while the first result is unknown.
 
 ## No recent backup appears
 
-Confirm the site's connection and active Backup product, then check WordPress cron, outbound HTTPS, loopback health, available disk space, and recent host or security changes. Look for a **Backup complete** event after a known harmless change. If the timeline remains stale, record the last successful time and escalate before relying on it for recovery.
+Confirm the site's Jetpack connection, active Backup entitlement, saved site credentials, and the last Backup event first. Look for a **Backup complete** event after a known harmless change and inspect any explicit credential or service error. Confirm that the site is not multisite and does not split its `siteurl` and `home` URLs. If the timeline remains stale, record the last successful time and escalate before relying on it for recovery. WordPress cron and loopback tests describe local site health, but they do not prove that the remote backup engine can reach the site or that stored credentials are valid.
 
 ## Activity is present but a download fails
 

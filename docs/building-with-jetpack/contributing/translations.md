@@ -20,4 +20,4 @@ Use numbered placeholders when translators may reorder values, and add a transla
 
 Product names remain product names, while surrounding instructions should be translatable. Test long strings, RTL layout, date/number formatting, plural cases, and escaped output. Never use a translated value as a stable identifier, option name, route, CSS class, or capability.
 
-Follow the owning project's extraction and build scripts and consult the pinned [translation guide](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/translations.md).
+Follow the owning project's extraction and build scripts and consult the pinned [translation guide](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/translations.md).

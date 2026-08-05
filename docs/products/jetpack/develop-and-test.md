@@ -6,11 +6,18 @@ document_type: how-to
 sidebar_position: 30
 sidebar_collapsed: false
 product: jetpack
-source_ref: 5c0d27877fd19504a8de8b8618950d51876816a0
+source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---
 
-The main plugin is owned at [`projects/plugins/jetpack`](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack) in the public Jetpack monorepo. Shared behavior may instead belong to a package under `projects/packages` or a JavaScript package under `projects/js-packages`; change the owning project rather than duplicating it inside the plugin.
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/file-tree {"root":"Automattic/jetpack","tree":"projects/plugins/jetpack/\n  modules/\n  extensions/\n  _inc/\n  src/\nprojects/packages/","caption":"Jetpack source ownership at the pinned review revision.","collapsible":true,"open":true} /-->
+
+<!-- wp:docspress/terminal-session {"title":"Jetpack project checks","shell":"bash","prompt":"$","command":"jp install plugins/jetpack\njp build plugins/jetpack \u002d\u002ddeps\njp test js plugins/jetpack\njp test typecheck plugins/jetpack\njp phan plugins/jetpack","output":"Run only the checks defined by the owning project, then verify the changed behavior in WordPress."} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
+The main plugin is owned at [projects/plugins/jetpack](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack) in the public Jetpack monorepo. Shared behavior may instead belong to a package under `projects/packages` or a JavaScript package under `projects/js-packages`; change the owning project rather than duplicating it inside the plugin.
 
 ## Prepare the checkout
 
@@ -40,12 +47,13 @@ jp docker up -d
 jp docker install
 jp docker phpunit jetpack
 jp test js plugins/jetpack
+jp test typecheck plugins/jetpack
 jp phan plugins/jetpack
 ```
 
-For a focused PHP rerun, pass PHPUnit options after `--`, for example `jp docker phpunit jetpack -- --filter=Relevant_Test`. Run the full relevant suite before handoff. If a shared package changed, also run `jp test php`, `jp test js`, and `jp phan` for that package.
+For a focused PHP rerun, pass PHPUnit options after `--`, for example `jp docker phpunit jetpack -- --filter=Relevant_Test`. Run the full relevant suite before handoff. If a shared package changed, also run `jp test php`, `jp test js`, type checks where defined, and `jp phan` for that package. Run `tools/fixup-project-versions.sh` after changing inter-project versions or dependencies.
 
-CI exercises multiple supported PHP versions. Keep syntax compatible with the project's minimum version in its Composer metadata; the [pinned plugin readme](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/jetpack/readme.txt) reports the requirements for this snapshot.
+CI exercises PHP 7.2 through 8.5 at this review revision. Keep syntax compatible with the project's minimum version in its Composer metadata; the [pinned plugin readme](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/jetpack/readme.txt) reports the user-facing requirements for this snapshot.
 
 ## Verify the behavior
 

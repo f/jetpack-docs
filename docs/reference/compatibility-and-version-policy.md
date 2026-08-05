@@ -20,4 +20,4 @@ At the pinned research revision, the repository matrix declares WordPress 6.9 as
 - Follow deprecation notices and migrate before removal; do not silence them globally.
 - Test the lowest and highest versions claimed by your integration.
 
-An immutable source link proves what one revision implements; it does not prove every installed version behaves identically. See the pinned [version matrix](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/.github/versions.sh) and [deprecated hooks](hooks/deprecated-hooks-and-replacements.md).
+An immutable source link proves what one revision implements; it does not prove every installed version behaves identically. See the pinned [version matrix](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/.github/versions.sh) and [deprecated hooks](hooks/deprecated-hooks-and-replacements.md).

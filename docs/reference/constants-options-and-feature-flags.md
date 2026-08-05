@@ -17,4 +17,4 @@ The `automattic/jetpack-constants` package wraps constant access so Jetpack code
 
 When configuration is public, document its load time, scope (network/site/user), default, accepted type, security impact, and precedence relative to UI settings. Clear runtime caches before asserting a changed value in tests.
 
-Pinned sources: [Constants package](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/constants) and [Feature Flags package](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/feature-flags).
+Pinned sources: [Constants package](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/constants) and [Feature Flags package](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/feature-flags).

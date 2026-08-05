@@ -10,9 +10,19 @@ hook_name: jetpack_offline_mode
 hook_type: filter
 since: "1.3.0"
 deprecated: false
-source_url: https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/status/src/class-status.php#L45-L54
+source_url: https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/status/src/class-status.php#L45-L54
 last_reviewed: "2026-08-05"
 ---
+<!-- jetpack-docs:hook-blocks:start -->
+
+<!-- wp:docspress/fields {"title":"jetpack_offline_mode callback parameters","description":"The filter contract verified at the pinned source revision.","fields":[{"name":"$offline_mode","type":"bool","required":true,"defaultValue":"","description":"the caller's current decision. Status::is_offline_mode() passes the result calculated from constants and local-site detection before the option fallback; the Connection status diagnostic passes false to isolate filter behavior.","values":"","deprecated":false}],"searchable":true,"compact":false} /-->
+
+<!-- wp:docspress/colorful-code {"language":"php","filename":"jetpack_offline_mode.php","code":"\u003c?php\n/**\n * Plugin Name: My controlled Jetpack offline mode\n */\n\nfunction myjp_controlled_offline_mode( $offline_mode ) {\n\treturn $offline_mode || (bool) get_option( 'myjp_force_jetpack_offline', false );\n}\nadd_filter( 'jetpack_offline_mode', 'myjp_controlled_offline_mode' );","highlightedLines":"","showLineNumbers":true,"caption":"Minimal external filter callback","diffMode":"none","copyMode":"all","annotations":[]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Preserve the jetpack_offline_mode contract","content":"\u003cp\u003eRegister this callback outside Jetpack source, preserve earlier callback decisions, and follow the compatibility and failure cautions on this page. A source occurrence is not permission to depend on surrounding private implementation.\u003c/p\u003e","collapsible":false,"open":true} /-->
+
+<!-- wp:docspress/result {"status":"success","title":"Source contract pinned for jetpack_offline_mode","content":"\u003cp\u003eThe classification, callback shape, example, and verification steps on this page are tied to an immutable public source permalink.\u003c/p\u003e","meta":"Since: 1.3.0 · Deprecated: no"} /-->
+<!-- jetpack-docs:hook-blocks:end -->
 
 ## Behavior
 
@@ -77,4 +87,4 @@ Expect `true` and then `false`. These direct calls prove the callback independen
 
 ## Source
 
-[View the filter documentation and boolean cast at the pinned revision.](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/status/src/class-status.php#L45-L54) The [Connection status diagnostic applies the same filter to `false`](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages/connection/src/class-rest-connector.php#L493-L510).
+[View the filter documentation and boolean cast at the pinned revision.](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/status/src/class-status.php#L45-L54) The [Connection status diagnostic applies the same filter to false](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/connection/src/class-rest-connector.php#L493-L510).

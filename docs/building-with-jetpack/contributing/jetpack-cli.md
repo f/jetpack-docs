@@ -28,4 +28,4 @@ Package tests generally run directly through `jp test`. The Jetpack and WPCOMSH 
 jp docker phpunit jetpack -- --filter=Jetpack_Sync_Post_Test
 ```
 
-Command availability and options are defined in the [pinned CLI source](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/tools/cli). Prefer `jp <command> --help` over examples from an older branch.
+Command availability and options are defined in the [pinned CLI source](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/tools/cli). Prefer `jp <command> --help` over examples from an older branch.

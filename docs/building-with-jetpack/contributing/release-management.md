@@ -20,4 +20,4 @@ Most contributors should not edit release versions or generated changelogs manua
 - Document schema, option, scheduled-task, and content migrations so they are repeatable and safe to retry.
 - Do not create tags or publish registry artifacts outside the documented release workflow.
 
-Release leads should use the current project workflow and public [release documentation](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/release-management.md); the source branch is authoritative when this overview differs.
+Release leads should use the current project workflow and public [release documentation](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/release-management.md); the source branch is authoritative when this overview differs.

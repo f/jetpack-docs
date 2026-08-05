@@ -27,4 +27,4 @@ jp docker phpunit jetpack -- --filter=Target_Test
 
 Cover the behavior changed, a failure case, and the compatibility boundary. For hooks, reset callbacks in teardown. For REST routes, assert permissions and schema errors. For UI, prefer Testing Library queries that reflect user interaction rather than implementation structure.
 
-CI tests supported PHP versions, so code that passes locally on the newest interpreter can still fail on the minimum. Consult the pinned [version matrix](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/.github/versions.sh) and [testing guide](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/automated-testing.md).
+CI tests supported PHP versions, so code that passes locally on the newest interpreter can still fail on the minimum. Consult the pinned [version matrix](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/.github/versions.sh) and [testing guide](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/automated-testing.md).

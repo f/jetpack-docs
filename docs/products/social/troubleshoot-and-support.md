@@ -6,9 +6,16 @@ document_type: troubleshooting
 sidebar_position: 40
 sidebar_collapsed: false
 product: social
-source_ref: 5c0d27877fd19504a8de8b8618950d51876816a0
+source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---
+
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/troubleshooter {"title":"Triage Jetpack Social","intro":"Use synthetic data on staging when possible. Record the first failed boundary before changing configuration.","startId":"setup","questions":[{"id":"setup","question":"Is the correct destination connected to the publishing user or intentionally shared with the required role?","yesLabel":"Yes","yesNext":"reproduce","noLabel":"No or unknown","noNext":"setup-check"},{"id":"reproduce","question":"Can the same symptom be reproduced with a minimal synthetic case on staging?","yesLabel":"Yes","yesNext":"isolate","noLabel":"No","noNext":"collect"}],"outcomes":[{"id":"setup-check","status":"warning","title":"Restore the product prerequisite","content":"\u003cp\u003eCheck site connection, destination authorization, sharing policy, publish capability, and whether the post type is supported.\u003c/p\u003e"},{"id":"isolate","status":"neutral","title":"Isolate the failing layer","content":"\u003cp\u003eChange one variable at a time, preserve logs and versions, and compare product, WordPress, browser, theme, plugin, cache, and service boundaries.\u003c/p\u003e"},{"id":"collect","status":"neutral","title":"Collect safe evidence","content":"\u003cp\u003eRecord the exact action, role, time, versions, and sanitized error. Do not include tokens, private URLs, customer content, or raw production data.\u003c/p\u003e"}],"showProgress":true} /-->
+
+<!-- wp:docspress/result {"status":"success","title":"Verification target","content":"\u003cp\u003eOne controlled post reaches each selected destination once with the intended text, canonical URL, and media.\u003c/p\u003e","meta":"Recheck after every change"} /-->
+<!-- jetpack-docs:product-blocks:end -->
 
 Check both sides of the workflow: WordPress can record a share attempt while the destination account rejects, delays, reformats, or removes the post. Before retrying, look at the destination to prevent a duplicate.
 
@@ -17,12 +24,18 @@ Check both sides of the workflow: WordPress can record a share attempt while the
 | Symptom | First checks |
 | --- | --- |
 | Connection is missing or expired | Confirm the correct WordPress user and destination account, current Jetpack connection, destination authorization, and whether the connection was personal or shared. Reauthorize only after recording the error. |
-| Another editor cannot use a connection | Check the editor's publish capability and the connection's sharing setting. Do not share a credential globally as a substitute for the correct role. |
+| Another editor cannot use a connection | Check `publish_posts`; setting a connection to shared additionally requires `edit_others_posts`. Do not share a credential globally as a substitute for the correct role. |
 | A new post was not shared | Confirm Social was enabled for that post, the post type is supported, a connection was selected, and the post reached the expected published state. Check any local publication-policy filter. |
 | A scheduled post did not share | Compare the site timezone, WordPress publication timestamp, cron health, Social status, and destination result as separate stages. |
 | Text or link is wrong | Inspect the editor's custom message, canonical public URL, redirect behavior, and destination-specific formatting. Purge only known cache layers and retest a new controlled post. |
 | Image is missing | Confirm the image is publicly reachable, has a supported format and size, and produces correct public metadata. A destination cannot fetch a private or blocked URL. |
 | WordPress reports an error but a destination post exists | Do not retry immediately. Compare timestamp and content, record the ambiguous result, and remove duplicates through the destination account if authorized. |
+| Reshare is unavailable | Distinguish the initial automatic share from manual resharing and confirm the current post state, product entitlement, and destination support. |
+| Per-network text is wrong | Compare the per-network customization, message template, and destination limits before changing the original post. |
+| Image selection is wrong | Separate Social Image Generator output, featured image, attached media, and link-preview metadata. |
+| UTM parameters are missing or duplicated | Inspect the configured UTM template and existing canonical URL once; do not stack a second tracking layer blindly. |
+| Social Notes returns a 404 | Refresh the documented rewrite/permalink state and verify the Notes route with a synthetic note. |
+| Open Graph tags are missing | Check whether another SEO or social plugin suppressed or replaced Jetpack's Open Graph output. |
 
 ## Safe evidence
 

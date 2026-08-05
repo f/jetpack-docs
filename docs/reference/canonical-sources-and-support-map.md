@@ -9,7 +9,7 @@ sidebar_collapsed: true
 
 | Question | Start here |
 | --- | --- |
-| What does this pinned implementation do? | [Automattic/jetpack at the research revision](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0) |
+| What does this pinned implementation do? | [Automattic/jetpack at the research revision](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f) |
 | How does a site owner configure a product? | The relevant [product guide](../products/index.md), then [Jetpack Support](https://jetpack.com/support/) |
 | What is the WordPress hook, REST, or block contract? | [WordPress Developer Resources](https://developer.wordpress.org/) plus the versioned Jetpack source |
 | How do I report a public repository bug? | [Automattic/jetpack issues](https://github.com/Automattic/jetpack/issues) with reproduction steps and no secrets |

@@ -9,9 +9,21 @@ product: "akismet"
 last_reviewed: "2026-08-05"
 ---
 
-**Akismet is not developed in the Jetpack monorepo.** Its released public plugin source is in [WordPress.org's Akismet SVN repository](https://plugins.svn.wordpress.org/akismet/). The canonical public pages do not publish a stable contributor build-and-test command contract, so this guide does not invent one. Use the released source for inspection and ask through [Akismet support](https://akismet.com/support/) for the current contribution route before proposing a plugin change. Do not run `jp build`, add Jetpack changelog files, or claim a Jetpack package owns Akismet code.
+<!-- jetpack-docs:product-blocks:start -->
 
-The Jetpack revision `5c0d27877fd19504a8de8b8618950d51876816a0` is recorded here only as the product-inventory research pin. It is not an Akismet source revision.
+<!-- wp:docspress/file-tree {"root":"https://plugins.svn.wordpress.org/akismet/","tree":"WordPress.org SVN @ tag 5.7, r3514187\n  class.akismet.php\n  abilities/\nYour integration\n  adapter/\n  tests/","caption":"Akismet Anti-spam source ownership at the pinned review revision.","collapsible":true,"open":true} /-->
+
+<!-- wp:docspress/terminal-session {"title":"Akismet Anti-spam project checks","shell":"bash","prompt":"$","command":"svn export -r 3514187 https://plugins.svn.wordpress.org/akismet/tags/5.7/ akismet-5.7\nsvn info -r 3514187 https://plugins.svn.wordpress.org/akismet/tags/5.7/","output":"Run only the checks defined by the owning project, then verify the changed behavior in WordPress."} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
+**Akismet is not developed in the Jetpack monorepo.** This review used tag 5.7 at SVN revision 3514187. The canonical public pages do not publish a stable contributor build-and-test command contract, so this guide does not invent one. Use the released source for inspection and ask through [Akismet support](https://akismet.com/support/) for the current contribution route before proposing a plugin change. Do not run `jp build`, add Jetpack changelog files, or claim a Jetpack package owns Akismet code.
+
+To reproduce the source snapshot without taking mutable trunk as evidence:
+
+```bash
+svn export -r 3514187 https://plugins.svn.wordpress.org/akismet/tags/5.7/ akismet-5.7
+svn info -r 3514187 https://plugins.svn.wordpress.org/akismet/tags/5.7/
+```
 
 ## Test an API consumer
 

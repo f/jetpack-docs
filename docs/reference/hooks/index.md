@@ -14,4 +14,4 @@ This catalog contains hooks selected for external use and verified against the p
 - Browse [actions](actions/index.md), [filters](filters/index.md), or [hooks by product](browse-hooks-by-product.md).
 - Check [deprecated hooks and replacements](deprecated-hooks-and-replacements.md) during upgrades.
 
-Each detail page records the exact callback signature, parameters, return behavior, ownership, version annotation, cautions, verification, and an immutable source link. The initial catalog contains eight complete contracts spanning Jetpack bootstrap and offline development, Boost optimization, Search queries, VideoPress metadata, and Backup initialization.
+Each detail page records the exact callback signature, parameters, return behavior, ownership, version annotation, cautions, verification, and an immutable source link. The initial catalog contains 29 complete contracts across 12 product families; Jetpack Scan explicitly documents that it has no curated public hook at the pinned revision.

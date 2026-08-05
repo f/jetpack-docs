@@ -6,22 +6,31 @@ document_type: reference
 sidebar_position: 20
 sidebar_collapsed: false
 product: crm
-source_ref: 5c0d27877fd19504a8de8b8618950d51876816a0
+source_ref: a6e65435e2531e430c75024f1183612f31263d1f
 last_reviewed: 2026-08-05
 ---
 
-Jetpack CRM's extension contracts are owned outside the Jetpack monorepo. Use the [published CRM API reference](https://automattic.github.io/jetpack-crm-api-docs/), compare it with the [public code examples](https://github.com/Automattic/jetpack-crm-code-examples), and verify behavior against the installed CRM version.
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/fields {"title":"Jetpack CRM extension surfaces","description":"Start with a documented surface and verify its exact source contract before shipping.","fields":[{"name":"CRM API","type":"object","required":false,"defaultValue":"","description":"Follow the pinned external CRM API documentation for authentication, permissions, pagination, and errors.","values":"","deprecated":false},{"name":"CRM hooks","type":"object","required":false,"defaultValue":"","description":"Use only current hooks documented and owned by the CRM project.","values":"","deprecated":false},{"name":"Jetpack Forms integration","type":"object","required":false,"defaultValue":"","description":"Use the CRM-owned extension and Forms integration instead of writing directly to CRM tables.","values":"","deprecated":false}],"searchable":false,"compact":true} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Unsupported boundary","content":"\u003cp\u003eA public class, REST request, or raw hook occurrence is not automatically a compatibility contract. Use only documented surfaces and keep a safe no-product fallback.\u003c/p\u003e","collapsible":false,"open":true} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
+Jetpack CRM's extension contracts are owned outside the Jetpack monorepo. Use the [pinned API documentation source](https://github.com/Automattic/jetpack-crm-api-docs/blob/c2a53fd8d6de70f27c87bd15652ccacf0ecabd3f/source/index.html.md#L16-L90), compare examples with the pinned CRM implementation, and verify behavior against the installed version.
 
 ## Choose a supported route
 
 | Need | Route |
 | --- | --- |
 | Read or write CRM records from an integration | Start with the owning API documentation and its authentication, permission, pagination, and error contracts. |
-| Customize CRM's local PHP behavior | Use only hooks documented or maintained by the CRM project; verify their definitions in [CRM source](https://github.com/Automattic/jetpack-crm). |
+| Customize CRM's local PHP behavior | Use only hooks documented or maintained by the CRM project; verify their definitions in the [pinned CRM source](https://github.com/Automattic/jetpack-crm/tree/8dbe017c517819a7f6c583dff6e4cb8819a7f72e). |
 | Capture a Jetpack Form response | Enable the CRM-owned Jetpack Forms extension and the Forms integration; do not insert directly into CRM tables. |
 | Change a CRM contract | Open the design and implementation change in the CRM repository, with tests and a migration path. |
 
-This local documentation does not duplicate individual CRM hook signatures because doing so would create a second, drifting API reference. The absence of CRM hooks in the Jetpack [hooks reference](/docs/reference/hooks/) does not mean the product has no extension points; it means Jetpack does not own those contracts.
+The public API root is `/zbs_api/`; pretty permalinks are required, `/status` is the first availability check, and list operations use the documented pagination and assignment fields. Do not confuse that published API with local `zbscrm/v1` routes: those are an administrator/AJAX implementation surface protected by WordPress REST nonces and CRM capability callbacks.
+
+For local display extension, use the curated [jetpack-crm-contact-vital-tabs](/docs/reference/hooks/filters/jetpack-crm-contact-vital-tabs/) and [jetpack-crm-company-vital-tabs](/docs/reference/hooks/filters/jetpack-crm-company-vital-tabs/) contracts. Both hooks filter a tab-definition array; they are not actions. The public company code example still uses the stale name `zbs-company-vital-tabs`; the current source uses `jetpack-crm-company-vital-tabs`. Do not reproduce old client-portal hook examples whose names are absent from the reviewed source.
 
 ## Integration rules
 

@@ -21,4 +21,4 @@ Use the existing project build and imports. Direct React imports and `@wordpress
 
 Use the project's BEM-like naming, logical CSS properties for RTL, existing design tokens, semantic HTML, visible focus, keyboard operation, and appropriate announcements for dynamic changes. Verify editor and front-end behavior at narrow and wide widths.
 
-Run the project's linters and read the [pinned coding guidelines](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/docs/coding-guidelines.md) before requesting review.
+Run the project's linters and read the [pinned coding guidelines](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/docs/coding-guidelines.md) before requesting review.

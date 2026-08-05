@@ -9,6 +9,13 @@ product: "akismet"
 last_reviewed: "2026-08-05"
 ---
 
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/flow {"start":1,"steps":[{"title":"Authorize the service","content":"\u003cp\u003eInstall Akismet from its canonical distribution, enter an authorized key, and verify it without exposing the value.\u003c/p\u003e"},{"title":"Protect each input surface","content":"\u003cp\u003eConfirm every comment or form integration sends the documented fields and cannot be abused as an open relay.\u003c/p\u003e"},{"title":"Test classification and recovery","content":"\u003cp\u003eUse official synthetic test conventions, then verify spam, ham, moderation, and service-failure paths.\u003c/p\u003e"}]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Permissions and data boundary","content":"\u003cp\u003eAkismet evaluates submitted content and request metadata. Minimize fields, document the disclosure, protect keys, and never put real visitor submissions into development fixtures.\u003c/p\u003e","collapsible":false,"open":true} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
 Akismet is externally owned and its public plugin source is in [WordPress.org SVN](https://plugins.svn.wordpress.org/akismet/), not in Jetpack's `projects/plugins` tree. Follow [Akismet Support](https://akismet.com/support/) when its current UI differs from this workflow.
 
 ## Activate the service
@@ -20,6 +27,8 @@ Review the plugin's privacy-related options and explanatory text. Akismet checks
 ## Verify each input surface
 
 WordPress comments are the standard integration. Contact, registration, review, and other forms are covered only when the responsible plugin explicitly integrates with Akismet or custom code uses the published API.
+
+Jetpack Forms explicitly integrates with Akismet. Its editor preview/test submissions skip the anti-spam request so a synthetic preview does not pollute service decisions; verify Akismet with the documented form test path rather than expecting Form Preview to classify it.
 
 For each form:
 

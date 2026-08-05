@@ -37,4 +37,4 @@ add_filter( 'jetpack_offline_mode', 'myjp_offline_mode_for_local_host' );
 - Remove temporary hooks after tests so callbacks do not leak between cases.
 - Use the feature's public status method before assuming that installation means activation.
 
-See [`jetpack_loaded`](../reference/hooks/actions/jetpack-loaded.md) and [`jetpack_offline_mode`](../reference/hooks/filters/jetpack-offline-mode.md) for complete contracts.
+See [jetpack_loaded](../reference/hooks/actions/jetpack-loaded.md) and [jetpack_offline_mode](../reference/hooks/filters/jetpack-offline-mode.md) for complete contracts.

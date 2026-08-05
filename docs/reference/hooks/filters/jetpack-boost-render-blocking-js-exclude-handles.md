@@ -10,9 +10,19 @@ hook_name: jetpack_boost_render_blocking_js_exclude_handles
 hook_type: filter
 since: "1.0.0"
 deprecated: false
-source_url: https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/boost/app/modules/optimizations/render-blocking-js/class-render-blocking-js.php#L451-L473
+source_url: https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/boost/app/modules/optimizations/render-blocking-js/class-render-blocking-js.php#L451-L473
 last_reviewed: "2026-08-05"
 ---
+<!-- jetpack-docs:hook-blocks:start -->
+
+<!-- wp:docspress/fields {"title":"jetpack_boost_render_blocking_js_exclude_handles callback parameters","description":"The filter contract verified at the pinned source revision.","fields":[{"name":"$script_handles","type":"array\u003cint, string\u003e","required":true,"defaultValue":"","description":"registered WordPress script handles that Boost should leave in their original document position. The initial value supplied by Boost is an empty array; callbacks registered earlier may already have added handles.","values":"","deprecated":false}],"searchable":true,"compact":false} /-->
+
+<!-- wp:docspress/colorful-code {"language":"php","filename":"jetpack_boost_render_blocking_js_exclude_handles.php","code":"\u003c?php\n/**\n * Plugin Name: My Boost script compatibility\n */\n\nfunction myjp_keep_widget_script_in_place( $script_handles ) {\n\t$script_handles[] = 'my-order-sensitive-widget';\n\n\treturn array_values( array_unique( $script_handles ) );\n}\nadd_filter(\n\t'jetpack_boost_render_blocking_js_exclude_handles',\n\t'myjp_keep_widget_script_in_place',\n\t10,\n\t1\n);","highlightedLines":"","showLineNumbers":true,"caption":"Minimal external filter callback","diffMode":"none","copyMode":"all","annotations":[]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Preserve the jetpack_boost_render_blocking_js_exclude_handles contract","content":"\u003cp\u003eRegister this callback outside Jetpack source, preserve earlier callback decisions, and follow the compatibility and failure cautions on this page. A source occurrence is not permission to depend on surrounding private implementation.\u003c/p\u003e","collapsible":false,"open":true} /-->
+
+<!-- wp:docspress/result {"status":"success","title":"Source contract pinned for jetpack_boost_render_blocking_js_exclude_handles","content":"\u003cp\u003eThe classification, callback shape, example, and verification steps on this page are tied to an immutable public source permalink.\u003c/p\u003e","meta":"Since: 1.0.0 · Deprecated: no"} /-->
+<!-- jetpack-docs:hook-blocks:end -->
 
 ## Behavior
 
@@ -93,4 +103,4 @@ Install the example on a disposable site, activate Boost's render-blocking JavaS
 
 ## Source
 
-[View the filter documentation, application, strict handle check, and ignore behavior at the pinned revision.](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/projects/plugins/boost/app/modules/optimizations/render-blocking-js/class-render-blocking-js.php#L451-L473)
+[View the filter documentation, application, strict handle check, and ignore behavior at the pinned revision.](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/plugins/boost/app/modules/optimizations/render-blocking-js/class-render-blocking-js.php#L451-L473)

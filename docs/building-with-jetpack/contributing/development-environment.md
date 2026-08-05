@@ -33,4 +33,4 @@ In a Git worktree, run `tools/docker/bin/seed-worktree-env.sh` before `jp docker
 
 Activate only the plugin under test, make changes in its source directory, and use `jp watch <project>` for continuous development builds. Keep credentials out of `tools/docker/.env` commits.
 
-The pinned environment sources are [the version matrix](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/.github/versions.sh) and [Docker guide](https://github.com/Automattic/jetpack/blob/5c0d27877fd19504a8de8b8618950d51876816a0/tools/docker/README.md).
+The pinned environment sources are [the version matrix](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/.github/versions.sh) and [Docker guide](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/tools/docker/README.md).

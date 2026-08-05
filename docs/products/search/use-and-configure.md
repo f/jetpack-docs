@@ -6,11 +6,18 @@ document_type: "how-to"
 sidebar_position: 2
 sidebar_collapsed: false
 product: "search"
-source_ref: "5c0d27877fd19504a8de8b8618950d51876816a0"
+source_ref: "a6e65435e2531e430c75024f1183612f31263d1f"
 last_reviewed: "2026-08-05"
 ---
 
-Jetpack Search has two related concerns: the remote index must contain the right public documents, and the front-end interface must turn a visitor's query into a useful result set.
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/flow {"start":1,"steps":[{"title":"Confirm indexing scope","content":"\u003cp\u003eConnect the site, identify searchable post types and visibility rules, and wait for a controlled item to index.\u003c/p\u003e"},{"title":"Choose the search experience","content":"\u003cp\u003eConfigure Instant Search, blocks, filters, sorting, and display without bypassing content permissions.\u003c/p\u003e"},{"title":"Test a query set","content":"\u003cp\u003eUse representative exact, broad, filtered, empty, private, and newly published cases.\u003c/p\u003e"}]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Permissions and data boundary","content":"\u003cp\u003eSearch must never expose private, draft, restricted, or deleted content through results, facets, snippets, or cached indexes. Treat exposure as a security issue.\u003c/p\u003e","collapsible":false,"open":true} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
+Jetpack Search has two related concerns: the remote index must contain the right eligible documents, and the selected front-end experience must turn a visitor's query into a useful result set without widening visibility.
 
 ## Connect and index
 
@@ -22,7 +29,7 @@ Do not expose private, draft, membership-only, or personally identifying content
 
 ## Choose the experience
 
-The Search dashboard can configure the available Search presentation, including instant results and supported filters. Keep the initial configuration small:
+Choose explicitly among Embedded, Overlay, Blocks Overlay (beta), Inline/theme, and Off. The Search dashboard also controls result format, sorting, trigger behavior, excluded post types, highlights, infinite scroll, post date, product price, Powered by attribution, AI Answers, and suggestions. Keep the initial configuration small:
 
 1. Select only content types visitors understand.
 2. Add a category, product, or other taxonomy filter when it materially narrows results.
@@ -31,6 +38,14 @@ The Search dashboard can configure the available Search presentation, including 
 5. Test the theme's search form, header search, Search blocks, and direct `?s=` URLs.
 
 For WooCommerce, test products that are in stock, out of stock, hidden from the catalog, variable, and assigned to multiple categories. Search visibility should agree with the store's catalog rules.
+
+Search Suggestions, the Site Chat preview, AI Answers/personality, and agent access have separate preview, eligibility, and experience gates. Do not promise them on every site. At the pinned revision, private sites are not eligible for agent access. Recheck the installed dashboard and cited source before documenting a beta surface as generally available.
+
+## Permissions and data flow
+
+Dashboard and administrative REST operations require `manage_options`; Customizer integration requires `edit_theme_options`. Instant Search requests can send the query, filters, requested result fields, highlighted content or comments, images, and WooCommerce fields. Public and private sites use different request paths, and browser-side caching can temporarily mask service changes.
+
+Sync maintains the remote index from an explicit allowlist of post metadata, taxonomies, and settings. Review that allowlist before adding a custom field and never send a private field merely to make filtering convenient. Pinned evidence: [Instant Search request construction](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/search/src/instant-search/lib/api.js#L250-L381) and [Search Sync module](https://github.com/Automattic/jetpack/blob/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages/sync/src/modules/class-search.php#L1-L89).
 
 ## Measure quality
 

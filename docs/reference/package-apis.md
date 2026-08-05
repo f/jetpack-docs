@@ -21,4 +21,4 @@ Jetpack packages are independently versioned projects inside one monorepo. The p
 
 Check runtime requirements and peer dependencies in the chosen revision. Internal source paths, tests, and generated bundles are not exports. A package can require initialization, WordPress hooks, or another Jetpack package even when Composer/npm installation succeeds.
 
-Browse [all PHP packages](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/packages) and [all JavaScript packages](https://github.com/Automattic/jetpack/tree/5c0d27877fd19504a8de8b8618950d51876816a0/projects/js-packages), then verify the published registry version before selecting a constraint.
+Browse [all PHP packages](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/packages) and [all JavaScript packages](https://github.com/Automattic/jetpack/tree/a6e65435e2531e430c75024f1183612f31263d1f/projects/js-packages), then verify the published registry version before selecting a constraint.

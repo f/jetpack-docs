@@ -6,13 +6,20 @@ document_type: "how-to"
 sidebar_position: 2
 sidebar_collapsed: false
 product: "scan"
-source_ref: "5c0d27877fd19504a8de8b8618950d51876816a0"
+source_ref: "a6e65435e2531e430c75024f1183612f31263d1f"
 last_reviewed: "2026-08-05"
 ---
 
+<!-- jetpack-docs:product-blocks:start -->
+
+<!-- wp:docspress/flow {"start":1,"steps":[{"title":"Confirm Scan status","content":"\u003cp\u003eVerify connection, last successful scan, backups, site access, and authority before taking remediation action.\u003c/p\u003e"},{"title":"Assess one threat","content":"\u003cp\u003eInspect the affected path, signature, modification evidence, and whether the component can be replaced safely.\u003c/p\u003e"},{"title":"Remediate and rescan","content":"\u003cp\u003eUse the supported fix or a controlled clean replacement, rotate affected credentials, and confirm the threat stays clear.\u003c/p\u003e"}]} /-->
+
+<!-- wp:docspress/callout {"tone":"warning","title":"Permissions and data boundary","content":"\u003cp\u003eThreat evidence may contain file paths, vulnerable code, credentials, or personal data. Keep raw samples private and use the security reporting route for vulnerabilities.\u003c/p\u003e","collapsible":false,"open":true} /-->
+<!-- jetpack-docs:product-blocks:end -->
+
 ## Confirm Scan can operate
 
-Use an authorized administrator account to complete the Jetpack connection and activate the Scan product shown for the site. Confirm the dashboard can load current status and scan history. Configure notifications for a monitored address, then record who owns first response.
+Use an authorized administrator account to complete the Jetpack site and user connection and activate the Scan product shown for the site. The native screen requires `manage_options`, a connected user, and a non-multisite installation. At the pinned revision it also depends on the `rsm_jetpack_ui_modernization_scan` rollout flag, so use the supported Scan presentation offered to the site rather than forcing that internal flag. Confirm the dashboard can load current status and scan history. Configure notifications for a monitored address, then record who owns first response.
 
 Scan exchanges security status with connected Jetpack services. Restrict dashboard access and keep threat paths and reports out of public logs. Document the service in the site's security and privacy records.
 
